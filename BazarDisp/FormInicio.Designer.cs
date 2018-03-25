@@ -30,16 +30,28 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicio));
             this.label2 = new System.Windows.Forms.Label();
+            this.btnIniciaServidor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(363, 73);
+            this.label2.Location = new System.Drawing.Point(683, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "HOLA";
+            // 
+            // btnIniciaServidor
+            // 
+            this.btnIniciaServidor.AutoSize = true;
+            this.btnIniciaServidor.Location = new System.Drawing.Point(341, 213);
+            this.btnIniciaServidor.Name = "btnIniciaServidor";
+            this.btnIniciaServidor.Size = new System.Drawing.Size(117, 42);
+            this.btnIniciaServidor.TabIndex = 2;
+            this.btnIniciaServidor.Text = "INICIA SERVIDOR";
+            this.btnIniciaServidor.UseVisualStyleBackColor = true;
+            this.btnIniciaServidor.Click += new System.EventHandler(this.btnIniciaServidor_Click);
             // 
             // FormInicio
             // 
@@ -47,6 +59,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnIniciaServidor);
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormInicio";
@@ -60,6 +73,7 @@
 
         #endregion
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnIniciaServidor;
     }
 }
 
