@@ -12,7 +12,7 @@ namespace BazarDisp
 {
     /// <summary>
     /// Full Name: Philip Yepes Gallego
-    /// Version: 1.1
+    /// Version: 1
     /// </summary>
     class ServidorBazarDisp
     {

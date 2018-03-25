@@ -36,6 +36,7 @@ namespace BazarDisp
         {
             ServidorBazarDisp servidorBazar = new ServidorBazarDisp();
             servidorBazar.Inicio();
+
         }
     }
 }
