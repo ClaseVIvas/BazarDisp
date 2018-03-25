@@ -34,8 +34,8 @@ namespace BazarDisp
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)
         {
-            ServidorBazarDisp servidorBazar = new ServidorBazarDisp();
-            servidorBazar.Inicio();
+            Servidor servidor = new Servidor();
+            servidor.Inicio();
 
         }
     }

@@ -10,7 +10,7 @@ namespace ServidorBazarDisp
     {
         static void Main(string[] args)
         {
-            
+            Servidor servidor = new Servidor();
         }
     }
 }

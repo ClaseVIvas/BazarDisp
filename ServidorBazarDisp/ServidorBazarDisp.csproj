@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C334186B-757A-4C42-96FE-7BA73D5A4E65}</ProjectGuid>
+    <ProjectGuid>{11D73628-9036-4370-8120-46CED66C27F7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ServidorBazarDisp</RootNamespace>
     <AssemblyName>ServidorBazarDisp</AssemblyName>
@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servidor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

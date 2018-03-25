@@ -10,12 +10,9 @@ using System.IO;
 
 namespace BazarDisp
 {
-    /// <summary>
-    /// Full Name: Philip Yepes Gallego
-    /// Version: 1
-    /// </summary>
-    class ServidorBazarDisp
+    class Servidor
     {
+
         // DECLARACION DE VARIABLES
         int puerto = 31416;
         static Socket clienteH;
@@ -26,7 +23,7 @@ namespace BazarDisp
         StreamReader sr;
 
         // CODE
-        public ServidorBazarDisp()
+        public Servidor()
         {
             Inicio();
         }
@@ -66,7 +63,6 @@ namespace BazarDisp
         public void HiloCliente(object socket)
         {
             string mensajeCliente = "";
-
             FormBienvenida bazar = new FormBienvenida();
             Random numAleatorio = new Random();
             clienteH = (Socket)socket;
