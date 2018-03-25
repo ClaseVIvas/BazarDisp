@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BazarDisp
 {
-    public partial class Form1 : Form
+    public partial class FormBienvenida : Form
     {
-        public Form1()
+        public FormBienvenida()
         {
             InitializeComponent();
         }
