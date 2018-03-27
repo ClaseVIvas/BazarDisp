@@ -68,9 +68,9 @@ namespace BazarDisp
             clienteH = (Socket)socket;
             IPEndPoint ieCliente = (IPEndPoint)clienteH.RemoteEndPoint;
             //
-            NetworkStream ns = new NetworkStream(clienteH);
-            StreamWriter sw = new StreamWriter(ns);
-            StreamReader sr = new StreamReader(ns);
+            ns = new NetworkStream(clienteH);
+            sw = new StreamWriter(ns);
+            sr = new StreamReader(ns);
             sw.AutoFlush = true;
             //
             //
@@ -110,7 +110,7 @@ namespace BazarDisp
 
                         case "#salir":
                             sw.WriteLine("\t\t\t - HASTA LA PROXIMA " + bazar.textBox1.Text + " --");
-                            CierraConexion();
+                            finJuego = false;
                             break;
                         default:
                             sw.WriteLine("Comando No Reconocido");
