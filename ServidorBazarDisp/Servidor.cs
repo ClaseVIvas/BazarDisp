@@ -82,8 +82,8 @@ namespace ServidorBazarDisp
 
             try
             {
-                //string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR  --";
-                //sw.WriteLine(bienvenida);
+                string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR  --";
+                sw.WriteLine(bienvenida);
                 sw.WriteLine("\t Haga Click En los Botones Para Realizar las Siguientes Opciones");
                 sw.WriteLine("Dispositivos - Visualice todos los dipositivos que hay ahora Mismo");
                 sw.WriteLine("Hacer Pedido - Haga una peticion sobre un dispositivo que no tengamos y se lo pediremos");

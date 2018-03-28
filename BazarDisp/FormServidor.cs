@@ -38,8 +38,8 @@ namespace BazarDisp
 
             catch (SocketException e)
             {
-                MessageBox.Show(String.Format("Error de conexión con servidor: {0} \r\n Código de error: {1}({2})", e.Message, (SocketError)e.ErrorCode, e.ErrorCode), "CAMBIO DE IP Y PUERTO");
-                return;
+                MessageBox.Show(String.Format("Error de conexión con servidor: {0} \r\n Código de error: {1}({2})", e.Message, (SocketError)e.ErrorCode, e.ErrorCode), "BAZARDISP");
+                
             }
             catch (FormatException)
             {
@@ -68,9 +68,7 @@ namespace BazarDisp
                 mensajeServidor = sr.ReadToEnd();
                 txtbServidor.Text = mensajeServidor;
                 
-
                 //
-
 
                 ns.Close();
                 sr.Close();
@@ -84,34 +82,27 @@ namespace BazarDisp
                     Close();
                 }
             }
-            catch (IOException)
+            catch (IOException a)
             {
-                MessageBox.Show("ERROR:");
+                MessageBox.Show("ERROR: "+a.Message);
             }
         }
 
 
         private void FormServidor_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    Conexion();
-            //    NetworkStream ns = new NetworkStream(servidor);
-            //    StreamReader sr = new StreamReader(ns);
+            string texto;
+            Conexion();
+            NetworkStream ns = new NetworkStream(servidor);
+            StreamReader sr = new StreamReader(ns);
+            //
+            texto = sr.ReadToEnd();
 
-            //    mensajeServidor = sr.ReadToEnd();
-            //    txtbServidor.Text = mensajeServidor;
-                
-            //    ns.Close();
-            //    sr.Close();
-            //    servidor.Close();
-            //}
-            //catch (IOException)
-            //{
+            txtbServidor.Text = texto;
+            MessageBox.Show(texto);
 
-
-            //}
-
+            ns.Close();
+            sr.Close();
         }
 
         private void btnPedido_Click(object sender, EventArgs e)
