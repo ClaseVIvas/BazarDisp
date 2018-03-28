@@ -40,5 +40,10 @@ namespace BazarDisp
         {
             Close();
         }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
