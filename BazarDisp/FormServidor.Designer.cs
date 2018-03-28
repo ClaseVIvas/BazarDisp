@@ -29,27 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormServidor));
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnPedido = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtbServidor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.textBox1.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(499, 480);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "SERVIDOR BAZAR DISP";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnListar
             // 
@@ -59,9 +44,9 @@
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(148, 46);
             this.btnListar.TabIndex = 1;
-            this.btnListar.Text = "Listar Dispositivos";
+            this.btnListar.Text = "Dispositivos";
             this.btnListar.UseVisualStyleBackColor = true;
-            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
+            this.btnListar.Click += new System.EventHandler(this.PulsaComando);
             // 
             // btnPedido
             // 
@@ -84,7 +69,7 @@
             this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.Click += new System.EventHandler(this.PulsaComando);
             // 
             // label3
             // 
@@ -93,8 +78,21 @@
             this.label3.Location = new System.Drawing.Point(519, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(380, 89);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 5;
             this.label3.Text = "BazarDisp";
+            // 
+            // txtbServidor
+            // 
+            this.txtbServidor.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtbServidor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtbServidor.Font = new System.Drawing.Font("Rockwell", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbServidor.Location = new System.Drawing.Point(0, 0);
+            this.txtbServidor.Multiline = true;
+            this.txtbServidor.Name = "txtbServidor";
+            this.txtbServidor.ReadOnly = true;
+            this.txtbServidor.Size = new System.Drawing.Size(513, 480);
+            this.txtbServidor.TabIndex = 4;
+            this.txtbServidor.Text = "SERVIDOR BAZARDISP - ACTIVO";
             // 
             // FormServidor
             // 
@@ -102,11 +100,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(911, 480);
+            this.Controls.Add(this.txtbServidor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnPedido);
             this.Controls.Add(this.btnListar);
-            this.Controls.Add(this.textBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -120,11 +118,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button btnPedido;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtbServidor;
     }
 }

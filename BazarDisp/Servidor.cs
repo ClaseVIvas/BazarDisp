@@ -14,13 +14,9 @@ namespace BazarDisp
     {
 
         // DECLARACION DE VARIABLES
-        int puerto = 31416;
-        static Socket clienteH;
-        static bool finJuego = true;
-        //
-        NetworkStream ns;
-        StreamWriter sw;
-        StreamReader sr;
+        static int puerto = 31416;
+        static bool ejecucion = true;
+        static Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         // CODE
         public Servidor()
@@ -31,20 +27,21 @@ namespace BazarDisp
         public void Inicio()
         {
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
-            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                socket.Bind(ie);
-                socket.Listen(2);
+                s.Bind(ie);
+                s.Listen(3);
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("\t\t\t\t -- SERVIDOR BAZARDISP -- Puerto -> " + ie.Port);
-                while (true)
+                while (ejecucion)
                 {
-
-                    Socket clienteC = socket.Accept();
-                    Thread hilo = new Thread(HiloCliente);
-
-                    hilo.Start(clienteC);
+                    if (ejecucion)
+                    {
+                        Socket cliente = s.Accept();
+                        Thread hilo = new Thread(HiloCliente);
+                        hilo.Start(cliente);
+                        hilo.Join();
+                    }
                 }
             }
             catch (SocketException e) when (e.ErrorCode == (int)SocketError.ConnectionRefused)
@@ -55,7 +52,7 @@ namespace BazarDisp
                 ie = new IPEndPoint(IPAddress.Any, puerto);
             }
             // Cerramos la conexion del Servidor
-            socket.Close();
+            s.Close();
             Console.WriteLine("Terminando Conexion....");
             Console.ReadLine();
         }
@@ -64,13 +61,14 @@ namespace BazarDisp
         {
             string mensajeCliente = "";
             FormBienvenida bazar = new FormBienvenida();
-            Random numAleatorio = new Random();
-            clienteH = (Socket)socket;
+            Socket clienteH = (Socket)socket;
             IPEndPoint ieCliente = (IPEndPoint)clienteH.RemoteEndPoint;
             //
-            ns = new NetworkStream(clienteH);
-            sw = new StreamWriter(ns);
-            sr = new StreamReader(ns);
+            Console.WriteLine("\t -- Cliente Conectado {0} en el Puerto {1}", ieCliente.Address, ieCliente.Port);
+            //
+            NetworkStream ns = new NetworkStream(clienteH);
+            StreamWriter sw = new StreamWriter(ns);
+            StreamReader sr = new StreamReader(ns);
             sw.AutoFlush = true;
             //
             //
@@ -87,22 +85,22 @@ namespace BazarDisp
             }
             catch (ObjectDisposedException)
             {
-                CierraConexion();
+                
             }
-            while (finJuego)
+
+            try
             {
-                try
+                mensajeCliente = sr.ReadLine();
+                Console.WriteLine(bazar.textBox1.Text + ": " + mensajeCliente);
+                if (mensajeCliente == null)
                 {
-                    mensajeCliente = sr.ReadLine();
-                    Console.WriteLine(bazar.textBox1.Text + ": " + mensajeCliente);
-                    if (mensajeCliente == null)
-                    {
-                        mensajeCliente = "#salir";
-                    }
+                    mensajeCliente = "#salir";
+
                     /////////
                     switch (mensajeCliente.ToLower())
                     {
                         case "#lista":
+
                             break;
 
                         case "#pedir":
@@ -110,35 +108,30 @@ namespace BazarDisp
 
                         case "#salir":
                             sw.WriteLine("\t\t\t - HASTA LA PROXIMA " + bazar.textBox1.Text + " --");
-                            finJuego = false;
+                            ejecucion = false;
                             break;
                         default:
                             sw.WriteLine("Comando No Reconocido");
                             break;
                     }
                 }
-                catch (IOException)
-                {
-                    Console.WriteLine("SE HA DESCONECTADO EL AGENTE");
-                    CierraConexion();
-                    break;
-                }
-                catch (ObjectDisposedException)
-                {
-                    Console.WriteLine(bazar.textBox1.Text + " SE HA DESCONECTADO");
-                    CierraConexion();
-                    break;
-                }
             }
-        }
+            catch (IOException)
+            {
+                Console.WriteLine("SE HA DESCONECTADO EL AGENTE");
 
-        public void CierraConexion()
-        {
+            }
+            catch (ObjectDisposedException)
+            {
+                Console.WriteLine(bazar.textBox1.Text + " SE HA DESCONECTADO");
+
+            }
+            // FINALIZAMOS CONEXION
+            Console.WriteLine("\t Conexion Finalizada con {0}:{1}", ieCliente.Address, ieCliente.Port);
             ns.Close();
             sw.Close();
             sr.Close();
             clienteH.Close();
-            finJuego = false;
         }
     }
 }

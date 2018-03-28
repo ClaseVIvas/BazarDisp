@@ -15,13 +15,11 @@ namespace ServidorBazarDisp
     {
 
         // DECLARACION DE VARIABLES
-        int puerto = 31416;
-        static Socket clienteH;
-        static bool finJuego = true;
-        //
-        NetworkStream ns;
-        StreamWriter sw;
-        StreamReader sr;
+        static int puerto = 31416;
+        static bool ejecucion = true;
+        static Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        string[] dips = new string[] {"One Plus","Motorola","Iphone X","Xiaomi MI MIX 2","Samsung S9"};
+        List<string> dispositivos = new List<string>();
 
         // CODE
         public Servidor()
@@ -32,20 +30,21 @@ namespace ServidorBazarDisp
         public void Inicio()
         {
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
-            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                socket.Bind(ie);
-                socket.Listen(2);
+                s.Bind(ie);
+                s.Listen(3);
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("\t\t\t\t -- SERVIDOR BAZARDISP -- Puerto -> " + ie.Port);
-                while (true)
+                while (ejecucion)
                 {
-
-                    Socket clienteC = socket.Accept();
-                    Thread hilo = new Thread(HiloCliente);
-
-                    hilo.Start(clienteC);
+                    if (ejecucion)
+                    {
+                        Socket cliente = s.Accept();
+                        Thread hilo = new Thread(HiloCliente);
+                        hilo.Start(cliente);
+                        hilo.Join();
+                    }
                 }
             }
             catch (SocketException e) when (e.ErrorCode == (int)SocketError.ConnectionRefused)
@@ -56,90 +55,80 @@ namespace ServidorBazarDisp
                 ie = new IPEndPoint(IPAddress.Any, puerto);
             }
             // Cerramos la conexion del Servidor
-            socket.Close();
+            s.Close();
             Console.WriteLine("Terminando Conexion....");
-            Console.ReadLine();
         }
 
         public void HiloCliente(object socket)
         {
             string mensajeCliente = "";
-
-            Random numAleatorio = new Random();
-            clienteH = (Socket)socket;
+            
+            Socket clienteH = (Socket)socket;
             IPEndPoint ieCliente = (IPEndPoint)clienteH.RemoteEndPoint;
+            //
+            Console.WriteLine("\t -- Cliente Conectado {0} en el Puerto {1}", ieCliente.Address, ieCliente.Port);
             //
             NetworkStream ns = new NetworkStream(clienteH);
             StreamWriter sw = new StreamWriter(ns);
             StreamReader sr = new StreamReader(ns);
             sw.AutoFlush = true;
             //
+            foreach(string item in dips)
+            {
+                dispositivos.Add(item);
+            }
             //
+            //
+
             try
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR " + bazar.textBox1.Text + " --";
-                sw.WriteLine(bienvenida);
+                //string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR  --";
+                //sw.WriteLine(bienvenida);
+                sw.WriteLine("\t Haga Click En los Botones Para Realizar las Siguientes Opciones");
+                sw.WriteLine("Dispositivos - Visualice todos los dipositivos que hay ahora Mismo");
+                sw.WriteLine("Hacer Pedido - Haga una peticion sobre un dispositivo que no tengamos y se lo pediremos");
+                sw.WriteLine("Salir - Finalizar Sesion");
                 //
-                sw.WriteLine("\t Introduzca los siguientes comandos para trabajar en el servidor");
-                sw.WriteLine("#lista - Visualice todos los dipositivos que hay ahora Mismo");
-                sw.WriteLine("#pedir - Haga una peticion sobre un dispositivo que no tengamos y se lo pediremos");
-                sw.WriteLine("#salir - Finalizar Sesion");
-            }
-            catch (ObjectDisposedException)
-            {
-                CierraConexion();
-            }
-            while (finJuego)
-            {
-                try
+                mensajeCliente = sr.ReadLine();
+                if (mensajeCliente != null)
                 {
-                    mensajeCliente = sr.ReadLine();
-                    Console.WriteLine(bazar.textBox1.Text + ": " + mensajeCliente);
-                    if (mensajeCliente == null)
-                    {
-                        mensajeCliente = "#salir";
-                    }
+                    Console.WriteLine("Phili : " + mensajeCliente);
                     /////////
-                    switch (mensajeCliente.ToLower())
+                    switch (mensajeCliente)
                     {
-                        case "#lista":
+                        case "Dispositivos":
+                            foreach(string item in dispositivos)
+                            {
+                                sw.WriteLine(item);
+                            }
                             break;
 
-                        case "#pedir":
-                            break;
-
-                        case "#salir":
-                            sw.WriteLine("\t\t\t - HASTA LA PROXIMA " + bazar.textBox1.Text + " --");
-                            CierraConexion();
+                        case "Salir":
+                            sw.WriteLine("\t\t\t - HASTA LA PROXIMA  --");
+                            ejecucion = false;
                             break;
                         default:
                             sw.WriteLine("Comando No Reconocido");
                             break;
                     }
                 }
-                catch (IOException)
-                {
-                    Console.WriteLine("SE HA DESCONECTADO EL AGENTE");
-                    CierraConexion();
-                    break;
-                }
-                catch (ObjectDisposedException)
-                {
-                    Console.WriteLine(bazar.textBox1.Text + " SE HA DESCONECTADO");
-                    CierraConexion();
-                    break;
-                }
             }
-        }
+            catch (IOException)
+            {
+                Console.WriteLine("SE HA DESCONECTADO EL Cliente");
 
-        public void CierraConexion()
-        {
+            }
+            catch (ObjectDisposedException)
+            {
+                Console.WriteLine(" SE HA DESCONECTADO");
+
+            }
+            // FINALIZAMOS CONEXION
+            Console.WriteLine("\t Conexion Finalizada con {0}:{1}", ieCliente.Address, ieCliente.Port);
             ns.Close();
             sw.Close();
             sr.Close();
             clienteH.Close();
-            finJuego = false;
         }
     }
 }

@@ -45,13 +45,10 @@ namespace BazarDisp
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)
         {
-          //  Servidor servidor = new Servidor();
             FormServidor serv = new FormServidor();
             DialogResult resp;
             try
             {
-               // servidor.Inicio();
-                //Conexion();
                 resp = serv.ShowDialog();
                 switch (resp)
                 {
@@ -65,32 +62,9 @@ namespace BazarDisp
             }
             catch (Exception)
             {
-
-
-                
-                
             }
         }
 
-        public void Conexion()
-        {
-            try
-            {
-                servidor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                IPEndPoint ie = new IPEndPoint(IPAddress.Parse(IPCliente), puertoCliente);
-
-                servidor.Connect(ie);
-               // lblComando.Text = "SE HA CONECTADO AL SERVIDOR";
-            }
-            catch (SocketException e)
-            {
-                MessageBox.Show(String.Format("Error de conexión con servidor: {0} \r\n Código de error: {1}({2})", e.Message, (SocketError)e.ErrorCode, e.ErrorCode), "CAMBIO DE IP Y PUERTO");
-                return;
-            }
-            catch (FormatException)
-            {
-
-            }
-        }
+       
     }
 }
