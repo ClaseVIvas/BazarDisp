@@ -10,16 +10,19 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net.Sockets;
 using System.Net;
+using System.IO;
 
 namespace BazarDisp
 {
     public partial class FormInicio : Form
     {
         // DECLARACION DE VARIABLES
-        string IPCliente = "127.0.0.1";
-        int puertoCliente = 31416;
-        string mensajeServidor;
-        Socket servidor = null;
+        FormBienvenida bazar;
+        FormServidor serv;
+        string rutaMarcas;
+        DirectoryInfo imagenes_Marcas;
+        int x, y;
+        bool aceptar;
 
 
         // CODE
@@ -30,22 +33,55 @@ namespace BazarDisp
 
         private void FormInicio_Load(object sender, EventArgs e)
         {
-            FormBienvenida bazar = new FormBienvenida();
-            DialogResult resp = bazar.ShowDialog();
-            switch (resp)
+            bazar = new FormBienvenida();
+            aceptar = true;
+            do
             {
-                case DialogResult.OK:
-                    label2.Text = "BIENVENIDO "+bazar.textBox1.Text;
-                    break;
-                case DialogResult.Cancel:
-                    Close();
-                    break;
+                DialogResult resp = bazar.ShowDialog();
+                switch (resp)
+                {
+                    case DialogResult.OK:
+                        if (bazar.textBox1.Text == "")
+                        {
+                            aceptar = false;
+                            MessageBox.Show("Introduce Un Nombre Porfavor", "BazarDisp.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            aceptar = true;
+                            lblCliente.Text = "BIENVENIDO " + bazar.textBox1.Text;
+                            CreadImagenes();
+                        }
+                        break;
+                    case DialogResult.Cancel:
+                        Close();
+                        break;
+                } 
+            } while (!aceptar);
+        }
+
+        public void CreadImagenes()
+        {
+            rutaMarcas = "image_marcas";
+            imagenes_Marcas = new DirectoryInfo(rutaMarcas);
+            x = 55;
+            y = 99;
+            foreach(FileInfo item in imagenes_Marcas.GetFiles("*png"))
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Size = new Size(300,300);
+                pictureBox.Location = new Point(x,y);
+                Console.WriteLine(item);
+                pictureBox.Image = Image.FromFile(@"image_marcas\"+item);
+                Controls.Add(pictureBox);
+                pnlImagenes.Controls.Add(pictureBox);
+                x++;
             }
         }
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)
         {
-            FormServidor serv = new FormServidor();
+            serv = new FormServidor();
             DialogResult resp;
             try
             {
@@ -64,7 +100,5 @@ namespace BazarDisp
             {
             }
         }
-
-       
     }
 }

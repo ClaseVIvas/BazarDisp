@@ -34,13 +34,15 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtbServidor = new System.Windows.Forms.TextBox();
+            this.btnIniciar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnListar
             // 
             this.btnListar.AutoSize = true;
             this.btnListar.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListar.Location = new System.Drawing.Point(625, 188);
+            this.btnListar.Location = new System.Drawing.Point(641, 297);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(148, 46);
             this.btnListar.TabIndex = 1;
@@ -52,7 +54,7 @@
             // 
             this.btnPedido.AutoSize = true;
             this.btnPedido.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedido.Location = new System.Drawing.Point(642, 240);
+            this.btnPedido.Location = new System.Drawing.Point(658, 349);
             this.btnPedido.Name = "btnPedido";
             this.btnPedido.Size = new System.Drawing.Size(114, 52);
             this.btnPedido.TabIndex = 2;
@@ -63,7 +65,7 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(668, 298);
+            this.btnSalir.Location = new System.Drawing.Point(684, 407);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(62, 53);
             this.btnSalir.TabIndex = 3;
@@ -85,7 +87,7 @@
             // 
             this.txtbServidor.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtbServidor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtbServidor.Font = new System.Drawing.Font("Rockwell", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbServidor.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbServidor.Location = new System.Drawing.Point(0, 0);
             this.txtbServidor.Multiline = true;
             this.txtbServidor.Name = "txtbServidor";
@@ -93,6 +95,30 @@
             this.txtbServidor.Size = new System.Drawing.Size(513, 480);
             this.txtbServidor.TabIndex = 4;
             this.txtbServidor.Text = "SERVIDOR BAZARDISP - ACTIVO";
+            this.txtbServidor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnIniciar
+            // 
+            this.btnIniciar.AutoSize = true;
+            this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIniciar.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIniciar.Location = new System.Drawing.Point(641, 138);
+            this.btnIniciar.Name = "btnIniciar";
+            this.btnIniciar.Size = new System.Drawing.Size(149, 46);
+            this.btnIniciar.TabIndex = 6;
+            this.btnIniciar.Text = "INICAR SERVIDOR";
+            this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Script MT Bold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(623, 259);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(179, 24);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Comados del Servidor";
             // 
             // FormServidor
             // 
@@ -100,6 +126,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(911, 480);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtbServidor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSalir);
@@ -111,7 +139,6 @@
             this.Name = "FormServidor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SERVIDOR BAZARDISP";
-            this.Load += new System.EventHandler(this.FormServidor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +150,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtbServidor;
+        private System.Windows.Forms.Button btnIniciar;
+        private System.Windows.Forms.Label label1;
     }
 }

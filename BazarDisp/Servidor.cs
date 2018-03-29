@@ -16,7 +16,6 @@ namespace BazarDisp
         // DECLARACION DE VARIABLES
         static int puerto = 31416;
         static bool ejecucion = true;
-        static Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         // CODE
         public Servidor()
@@ -26,12 +25,12 @@ namespace BazarDisp
 
         public void Inicio()
         {
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
             {
                 s.Bind(ie);
                 s.Listen(3);
-                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("\t\t\t\t -- SERVIDOR BAZARDISP -- Puerto -> " + ie.Port);
                 while (ejecucion)
                 {
@@ -72,38 +71,27 @@ namespace BazarDisp
             sw.AutoFlush = true;
             //
             //
-            try
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR " + bazar.textBox1.Text + " --";
-                sw.WriteLine(bienvenida);
-                //
-                sw.WriteLine("\t Introduzca los siguientes comandos para trabajar en el servidor");
-                sw.WriteLine("#lista - Visualice todos los dipositivos que hay ahora Mismo");
-                sw.WriteLine("#pedir - Haga una peticion sobre un dispositivo que no tengamos y se lo pediremos");
-                sw.WriteLine("#salir - Finalizar Sesion");
-            }
-            catch (ObjectDisposedException)
-            {
-                
-            }
+
+            string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR " + bazar.textBox1.Text + " --";
+            sw.WriteLine(bienvenida);
+            //
+            sw.WriteLine("\t Al Presionar Los Botones:");
+            sw.WriteLine("Dispositivos - Visualice todos los dipositivos que hay ahora Mismo");
+            sw.WriteLine("Salir - Finalizar Sesion");
 
             try
             {
                 mensajeCliente = sr.ReadLine();
                 Console.WriteLine(bazar.textBox1.Text + ": " + mensajeCliente);
-                if (mensajeCliente == null)
+                if (mensajeCliente != null)
                 {
                     mensajeCliente = "#salir";
 
                     /////////
                     switch (mensajeCliente.ToLower())
                     {
-                        case "#lista":
-
-                            break;
-
-                        case "#pedir":
+                        case "Dispositivos":
+                            sw.WriteLine("LISTA");
                             break;
 
                         case "#salir":

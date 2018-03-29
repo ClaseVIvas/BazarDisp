@@ -31,6 +31,9 @@ namespace BazarDisp
         {
             try
             {
+                Servidor servidorBazar = new Servidor();
+                servidorBazar.Inicio();
+                //
                 servidor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ie = new IPEndPoint(IPAddress.Parse(IPCliente), puertoCliente);
                 servidor.Connect(ie);          
@@ -40,10 +43,6 @@ namespace BazarDisp
             {
                 MessageBox.Show(String.Format("Error de conexión con servidor: {0} \r\n Código de error: {1}({2})", e.Message, (SocketError)e.ErrorCode, e.ErrorCode), "BAZARDISP");
                 
-            }
-            catch (FormatException)
-            {
-
             }
         }
 
@@ -89,26 +88,39 @@ namespace BazarDisp
         }
 
 
-        private void FormServidor_Load(object sender, EventArgs e)
-        {
-            string texto;
-            Conexion();
-            NetworkStream ns = new NetworkStream(servidor);
-            StreamReader sr = new StreamReader(ns);
-            //
-            texto = sr.ReadToEnd();
-
-            txtbServidor.Text = texto;
-            MessageBox.Show(texto);
-
-            ns.Close();
-            sr.Close();
-        }
-
         private void btnPedido_Click(object sender, EventArgs e)
         {
             FormPedido pedido = new FormPedido();
             pedido.Show();
+        }
+
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            string mensaje = "";
+            Servidor servidorBazar = new Servidor();
+            //
+            servidorBazar.Inicio();
+            //
+            Conexion();
+            //
+            NetworkStream ns = new NetworkStream(servidor);
+            StreamReader sr = new StreamReader(ns);
+            //
+            try
+            {
+                mensaje = sr.ReadToEnd();
+                if (mensaje != null)
+                {
+                    txtbServidor.Text = mensaje;
+                }
+
+                ns.Close();
+                sr.Close();
+            }
+            catch (IOException a)
+            {
+                MessageBox.Show("ERROR: " + a.Message);
+            }
         }
     }
 }
