@@ -16,6 +16,8 @@ namespace BazarDisp
         // DECLARACION DE VARIABLES
         static int puerto = 31416;
         static bool ejecucion = true;
+        string[] dips = new string[] { "One Plus", "Motorola", "Iphone X", "Xiaomi MI MIX 2", "Samsung S9" };
+        List<string> dispositivos = new List<string>();
 
         // CODE
         public Servidor()
@@ -66,6 +68,10 @@ namespace BazarDisp
             StreamReader sr = new StreamReader(ns);
             sw.AutoFlush = true;
             //
+            foreach (string item in dips)
+            {
+                dispositivos.Add(item);
+            }
             //
 
             string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR " + bazar.textBox1.Text + " --";
@@ -88,6 +94,10 @@ namespace BazarDisp
                     {
                         case "Dispositivos":
                             sw.WriteLine("LISTA");
+                            foreach (string item in dispositivos)
+                            {
+                                sw.WriteLine(item);
+                            }
                             break;
 
                         case "#salir":

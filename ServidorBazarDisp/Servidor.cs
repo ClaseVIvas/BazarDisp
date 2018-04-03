@@ -24,11 +24,6 @@ namespace ServidorBazarDisp
         // CODE
         public Servidor()
         {
-            Inicio();
-        }
-
-        public void Inicio()
-        {
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
             {
@@ -58,6 +53,8 @@ namespace ServidorBazarDisp
             s.Close();
             Console.WriteLine("Terminando Conexion....");
         }
+
+
 
         public void HiloCliente(object socket)
         {

@@ -95,31 +95,10 @@ namespace BazarDisp
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            prueba = new Servidor2();
+            // prueba = new Servidor2();
+            servidorBazar = new Servidor();
             MessageBox.Show("SERVIDOR ACTIVADO");
             Conexion();
-            //string mensaje = "";
-            ////
-            //Conexion();
-            ////
-            //NetworkStream ns = new NetworkStream(servidor);
-            //StreamReader sr = new StreamReader(ns);
-            ////
-            //try
-            //{
-            //    mensaje = sr.ReadToEnd();
-            //    if (mensaje != null)
-            //    {
-            //        txtbServidor.Text = mensaje;
-            //    }
-
-            //    ns.Close();
-            //    sr.Close();
-            //}
-            //catch (IOException a)
-            //{
-            //    MessageBox.Show("ERROR: " + a.Message);
-            //}
         }
     }
 }
