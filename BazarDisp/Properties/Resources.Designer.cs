@@ -59,15 +59,5 @@ namespace BazarDisp.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
-        /// </summary>
-        internal static System.Drawing.Icon philip {
-            get {
-                object obj = ResourceManager.GetObject("philip", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
     }
 }

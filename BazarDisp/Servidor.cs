@@ -20,11 +20,6 @@ namespace BazarDisp
         // CODE
         public Servidor()
         {
-            Inicio();
-        }
-
-        public void Inicio()
-        {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
@@ -55,6 +50,7 @@ namespace BazarDisp
             Console.WriteLine("Terminando Conexion....");
             Console.ReadLine();
         }
+
 
         public void HiloCliente(object socket)
         {

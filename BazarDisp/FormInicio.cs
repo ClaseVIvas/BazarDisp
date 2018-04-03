@@ -56,7 +56,7 @@ namespace BazarDisp
                     case DialogResult.Cancel:
                         Close();
                         break;
-                } 
+                }
             } while (!aceptar);
         }
 
@@ -64,18 +64,36 @@ namespace BazarDisp
         {
             rutaMarcas = "image_marcas";
             imagenes_Marcas = new DirectoryInfo(rutaMarcas);
-            x = 55;
-            y = 99;
-            foreach(FileInfo item in imagenes_Marcas.GetFiles("*png"))
+            x = 10;
+            y = 0;
+
+            //foreach (FileInfo item in imagenes_Marcas.GetFiles("*png"))
+            //{
+            //    PictureBox pictureBox = new PictureBox();
+            //    pictureBox.Size = new Size(200, 133);
+            //    pictureBox.Location = new Point(x, y);
+            //    Console.WriteLine(item);
+            //    pictureBox.Image = Image.FromFile(@"image_marcas\" + item);
+            //    Controls.Add(pictureBox);
+            //    pnlImagenes.Controls.Add(pictureBox);
+            //    nuevaI = y * 150;
+            //}
+
+            for (int i = 0; i < 20; i++)
             {
+                if(i % 4 == 0)
+                {
+                    x = 5;
+                    y += 139;
+                }
                 PictureBox pictureBox = new PictureBox();
-                pictureBox.Size = new Size(300,300);
-                pictureBox.Location = new Point(x,y);
-                Console.WriteLine(item);
-                pictureBox.Image = Image.FromFile(@"image_marcas\"+item);
-                Controls.Add(pictureBox);
-                pnlImagenes.Controls.Add(pictureBox);
-                x++;
+                pictureBox.Size = new Size(200, 133);
+                pictureBox.Location = new Point(x, y);
+                Console.WriteLine(i + ".png");
+                pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
+               // Controls.Add(pictureBox);
+                panel1.Controls.Add(pictureBox);
+                x += 208;
             }
         }
 

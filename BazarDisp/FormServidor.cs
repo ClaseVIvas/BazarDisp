@@ -20,6 +20,8 @@ namespace BazarDisp
         int puertoCliente = 31416;
         string mensajeServidor;
         Socket servidor = null;
+        Servidor servidorBazar;
+        Servidor2 prueba;
 
         //CODE
         public FormServidor()
@@ -30,9 +32,7 @@ namespace BazarDisp
         public void Conexion()
         {
             try
-            {
-                Servidor servidorBazar = new Servidor();
-                servidorBazar.Inicio();
+            { 
                 //
                 servidor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ie = new IPEndPoint(IPAddress.Parse(IPCliente), puertoCliente);
@@ -42,7 +42,6 @@ namespace BazarDisp
             catch (SocketException e)
             {
                 MessageBox.Show(String.Format("Error de conexión con servidor: {0} \r\n Código de error: {1}({2})", e.Message, (SocketError)e.ErrorCode, e.ErrorCode), "BAZARDISP");
-                
             }
         }
 
@@ -96,31 +95,31 @@ namespace BazarDisp
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            Servidor servidorBazar = new Servidor();
-            //
-            servidorBazar.Inicio();
-            //
+            prueba = new Servidor2();
+            MessageBox.Show("SERVIDOR ACTIVADO");
             Conexion();
-            //
-            NetworkStream ns = new NetworkStream(servidor);
-            StreamReader sr = new StreamReader(ns);
-            //
-            try
-            {
-                mensaje = sr.ReadToEnd();
-                if (mensaje != null)
-                {
-                    txtbServidor.Text = mensaje;
-                }
+            //string mensaje = "";
+            ////
+            //Conexion();
+            ////
+            //NetworkStream ns = new NetworkStream(servidor);
+            //StreamReader sr = new StreamReader(ns);
+            ////
+            //try
+            //{
+            //    mensaje = sr.ReadToEnd();
+            //    if (mensaje != null)
+            //    {
+            //        txtbServidor.Text = mensaje;
+            //    }
 
-                ns.Close();
-                sr.Close();
-            }
-            catch (IOException a)
-            {
-                MessageBox.Show("ERROR: " + a.Message);
-            }
+            //    ns.Close();
+            //    sr.Close();
+            //}
+            //catch (IOException a)
+            //{
+            //    MessageBox.Show("ERROR: " + a.Message);
+            //}
         }
     }
 }
