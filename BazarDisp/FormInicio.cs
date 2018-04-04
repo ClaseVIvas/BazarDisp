@@ -81,7 +81,7 @@ namespace BazarDisp
 
             for (int i = 0; i < 20; i++)
             {
-                if(i % 4 == 0)
+                if (i % 4 == 0)
                 {
                     x = 5;
                     y += 139;
@@ -91,7 +91,7 @@ namespace BazarDisp
                 pictureBox.Location = new Point(x, y);
                 Console.WriteLine(i + ".png");
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
-               // Controls.Add(pictureBox);
+                // Controls.Add(pictureBox);
                 panel1.Controls.Add(pictureBox);
                 x += 208;
             }

@@ -21,7 +21,6 @@ namespace BazarDisp
         string mensajeServidor;
         Socket servidor = null;
         Servidor servidorBazar;
-        Servidor2 prueba;
 
         //CODE
         public FormServidor()

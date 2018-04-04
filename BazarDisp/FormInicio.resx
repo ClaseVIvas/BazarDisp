@@ -120,7 +120,8 @@
   <data name="txtExplicacion.Text" xml:space="preserve">
     <value>¡ Nos Alegra Tenerte Con Nosotros !  
  Este es un espacio para que encuentres el dispositivo que mas se adapate a ti o en su defecto hacer un pedido a nuestra fabrica. 
- Tranquil@, es muy sencillo. Solo haz click en la marca que deseas y verás los dispositivos de esa marca.</value>
+ Tranquil@, es muy sencillo. 
+Solo haz click en la marca que deseas y verás los dispositivos de esa marca.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

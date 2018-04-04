@@ -72,7 +72,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servidor.cs" />
-    <Compile Include="Servidor2.cs" />
     <EmbeddedResource Include="FormBienvenida.resx">
       <DependentUpon>FormBienvenida.cs</DependentUpon>
     </EmbeddedResource>

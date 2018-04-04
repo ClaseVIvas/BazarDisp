@@ -84,7 +84,7 @@
             this.pnlServidor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlServidor.Controls.Add(this.btnIniciaServidor);
             this.pnlServidor.Controls.Add(this.lblAyuda);
-            this.pnlServidor.Location = new System.Drawing.Point(864, 453);
+            this.pnlServidor.Location = new System.Drawing.Point(883, 359);
             this.pnlServidor.Name = "pnlServidor";
             this.pnlServidor.Size = new System.Drawing.Size(317, 90);
             this.pnlServidor.TabIndex = 4;
@@ -93,12 +93,12 @@
             // 
             this.txtExplicacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtExplicacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtExplicacion.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExplicacion.Location = new System.Drawing.Point(841, 92);
+            this.txtExplicacion.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExplicacion.Location = new System.Drawing.Point(852, 142);
             this.txtExplicacion.Multiline = true;
             this.txtExplicacion.Name = "txtExplicacion";
             this.txtExplicacion.ReadOnly = true;
-            this.txtExplicacion.Size = new System.Drawing.Size(383, 355);
+            this.txtExplicacion.Size = new System.Drawing.Size(383, 182);
             this.txtExplicacion.TabIndex = 7;
             this.txtExplicacion.Text = resources.GetString("txtExplicacion.Text");
             this.txtExplicacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -114,7 +114,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(12, 92);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(823, 345);
+            this.panel1.Size = new System.Drawing.Size(823, 484);
             this.panel1.TabIndex = 8;
             // 
             // button5

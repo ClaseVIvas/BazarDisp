@@ -22,6 +22,13 @@ namespace BazarDisp
         // CODE
         public Servidor()
         {
+            Thread hilo = new Thread(HiloCliente);
+            hilo.Start();
+        }
+
+
+        public void HiloCliente()
+        {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
@@ -29,16 +36,12 @@ namespace BazarDisp
                 s.Bind(ie);
                 s.Listen(3);
                 Console.WriteLine("\t\t\t\t -- SERVIDOR BAZARDISP -- Puerto -> " + ie.Port);
-                while (ejecucion)
-                {
-                    if (ejecucion)
-                    {
-                        Socket cliente = s.Accept();
-                        Thread hilo = new Thread(HiloCliente);
-                        hilo.Start(cliente);
-                        hilo.Join();
-                    }
-                }
+                //
+                Socket cliente = s.Accept();
+                Thread hilo = new Thread(ServidorStart);
+                hilo.Start(cliente);
+                hilo.Join();
+
             }
             catch (SocketException e) when (e.ErrorCode == (int)SocketError.ConnectionRefused)
             {
@@ -51,11 +54,12 @@ namespace BazarDisp
             s.Close();
             Console.WriteLine("Terminando Conexion....");
             Console.ReadLine();
+
         }
 
-
-        public void HiloCliente(object socket)
+        public void ServidorStart(object socket)
         {
+            //
             string mensajeCliente = "";
             FormBienvenida bazar = new FormBienvenida();
             Socket clienteH = (Socket)socket;
@@ -129,3 +133,4 @@ namespace BazarDisp
         }
     }
 }
+
