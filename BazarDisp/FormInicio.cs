@@ -41,7 +41,7 @@ namespace BazarDisp
                 switch (resp)
                 {
                     case DialogResult.OK:
-                        if (bazar.textBox1.Text == "")
+                        if (bazar.txtNombreCliente.Text == "")
                         {
                             aceptar = false;
                             MessageBox.Show("Introduce Un Nombre Porfavor", "BazarDisp.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -49,7 +49,7 @@ namespace BazarDisp
                         else
                         {
                             aceptar = true;
-                            lblCliente.Text = "BIENVENIDO " + bazar.textBox1.Text;
+                            lblCliente.Text = "BIENVENIDO " + bazar.txtNombreCliente.Text;
                             CreadImagenes();
                         }
                         break;

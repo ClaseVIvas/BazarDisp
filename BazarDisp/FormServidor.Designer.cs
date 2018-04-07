@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtbServidor = new System.Windows.Forms.TextBox();
             this.btnIniciar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblComandos = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnListar
@@ -110,15 +110,15 @@
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
-            // label1
+            // lblComandos
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Script MT Bold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(623, 259);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 24);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Comados del Servidor";
+            this.lblComandos.AutoSize = true;
+            this.lblComandos.Font = new System.Drawing.Font("Script MT Bold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComandos.Location = new System.Drawing.Point(623, 259);
+            this.lblComandos.Name = "lblComandos";
+            this.lblComandos.Size = new System.Drawing.Size(179, 24);
+            this.lblComandos.TabIndex = 7;
+            this.lblComandos.Text = "Comados del Servidor";
             // 
             // FormServidor
             // 
@@ -126,7 +126,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(911, 480);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblComandos);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtbServidor);
             this.Controls.Add(this.label3);
@@ -151,6 +151,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtbServidor;
         private System.Windows.Forms.Button btnIniciar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblComandos;
     }
 }

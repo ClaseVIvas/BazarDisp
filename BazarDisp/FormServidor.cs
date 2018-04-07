@@ -21,6 +21,7 @@ namespace BazarDisp
         string mensajeServidor;
         Socket servidor = null;
         Servidor servidorBazar;
+        FormBienvenida bienvenida;
 
         //CODE
         public FormServidor()
@@ -48,8 +49,7 @@ namespace BazarDisp
         private void PulsaComando(object sender, EventArgs e)
         {
             try
-            {
-                Conexion();
+            { 
                 txtbServidor.Text = "";
                 Button btnComando = sender as Button;
                 NetworkStream ns = new NetworkStream(servidor);
@@ -62,9 +62,11 @@ namespace BazarDisp
                 sw.Flush();
 
                 //
-                mensajeServidor = sr.ReadToEnd();
-                txtbServidor.Text = mensajeServidor;
-                
+                mensajeServidor = sr.ReadLine();
+                while (mensajeServidor != null)
+                {
+                    txtbServidor.Text = mensajeServidor;
+                }
                 //
 
                 ns.Close();
@@ -94,10 +96,28 @@ namespace BazarDisp
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            // prueba = new Servidor2();
+            bienvenida = new FormBienvenida();
             servidorBazar = new Servidor();
-            MessageBox.Show("SERVIDOR ACTIVADO");
             Conexion();
+            MessageBox.Show("SERVIDOR ACTIVADO");
+
+            try
+            {
+                NetworkStream ns = new NetworkStream(servidor);
+                StreamReader sr = new StreamReader(ns);
+                //
+                string mensaje = sr.ReadLine();
+                if(mensaje != null)
+                {
+                    txtbServidor.Text = mensaje + " - " +bienvenida.txtNombreCliente.Text;
+                    MessageBox.Show(txtbServidor.Text);
+                }
+            }
+            catch (IOException a)
+            {
+                MessageBox.Show("ERROR: " + a.Message);
+            }
+
         }
     }
 }

@@ -22,12 +22,12 @@ namespace BazarDisp
         // CODE
         public Servidor()
         {
-            Thread hilo = new Thread(HiloCliente);
+            Thread hilo = new Thread(Inicio);
             hilo.Start();
         }
 
 
-        public void HiloCliente()
+        public void Inicio()
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
@@ -37,10 +37,16 @@ namespace BazarDisp
                 s.Listen(3);
                 Console.WriteLine("\t\t\t\t -- SERVIDOR BAZARDISP -- Puerto -> " + ie.Port);
                 //
-                Socket cliente = s.Accept();
-                Thread hilo = new Thread(ServidorStart);
-                hilo.Start(cliente);
-                hilo.Join();
+                while (ejecucion)
+                {
+                    if (ejecucion)
+                    {
+                        Socket cliente = s.Accept();
+                        Thread hilo = new Thread(HiloCliente);
+                        hilo.Start(cliente);
+                        hilo.Join();  
+                    }
+                }
 
             }
             catch (SocketException e) when (e.ErrorCode == (int)SocketError.ConnectionRefused)
@@ -57,7 +63,7 @@ namespace BazarDisp
 
         }
 
-        public void ServidorStart(object socket)
+        public void HiloCliente(object socket)
         {
             //
             string mensajeCliente = "";
@@ -78,21 +84,20 @@ namespace BazarDisp
             }
             //
 
-            string bienvenida = "\t\t -- BIENVENIDO AL SERVIDOR " + bazar.textBox1.Text + " --";
-            sw.WriteLine(bienvenida);
+            //string bienvenida = "BIENVENIDO AL SERVIDOR " + bazar.txtNombreCliente.Text;
+            //Console.WriteLine(bazar.txtNombreCliente.Text);
+            //sw.WriteLine(bienvenida);
             //
-            sw.WriteLine("\t Al Presionar Los Botones:");
-            sw.WriteLine("Dispositivos - Visualice todos los dipositivos que hay ahora Mismo");
-            sw.WriteLine("Salir - Finalizar Sesion");
+            sw.WriteLine("Al Presionar Los Botones: \r\n "+ "Dispositivos - Visualice todos los dipositivos que hay ahora Mismo \r\n"+ "Salir - Finalizar Sesion");
 
             try
             {
                 mensajeCliente = sr.ReadLine();
-                Console.WriteLine(bazar.textBox1.Text + ": " + mensajeCliente);
+                Console.WriteLine(bazar.txtNombreCliente.Text + ": " + mensajeCliente);
                 if (mensajeCliente != null)
                 {
                     mensajeCliente = "#salir";
-
+                    
                     /////////
                     switch (mensajeCliente.ToLower())
                     {
@@ -105,7 +110,7 @@ namespace BazarDisp
                             break;
 
                         case "#salir":
-                            sw.WriteLine("\t\t\t - HASTA LA PROXIMA " + bazar.textBox1.Text + " --");
+                            sw.WriteLine("HASTA LA PROXIMA " + bazar.txtNombreCliente.Text + " --");
                             ejecucion = false;
                             break;
                         default:
@@ -113,6 +118,7 @@ namespace BazarDisp
                             break;
                     }
                 }
+                ejecucion = false;
             }
             catch (IOException)
             {
@@ -121,7 +127,7 @@ namespace BazarDisp
             }
             catch (ObjectDisposedException)
             {
-                Console.WriteLine(bazar.textBox1.Text + " SE HA DESCONECTADO");
+                Console.WriteLine(bazar.txtNombreCliente.Text + " SE HA DESCONECTADO");
 
             }
             // FINALIZAMOS CONEXION
