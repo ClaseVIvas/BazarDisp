@@ -100,7 +100,6 @@ namespace BazarDisp
             servidorBazar = new Servidor();
             Conexion();
             MessageBox.Show("SERVIDOR ACTIVADO");
-
             try
             {
                 NetworkStream ns = new NetworkStream(servidor);
@@ -111,13 +110,16 @@ namespace BazarDisp
                 {
                     txtbServidor.Text = mensaje + " - " +bienvenida.txtNombreCliente.Text;
                     MessageBox.Show(txtbServidor.Text);
+
+                    ns.Close();
+                    sr.Close();
                 }
             }
             catch (IOException a)
             {
                 MessageBox.Show("ERROR: " + a.Message);
             }
-
+            
         }
     }
 }

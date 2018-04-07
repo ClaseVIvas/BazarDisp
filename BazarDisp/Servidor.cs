@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.IO;
 
+
 namespace BazarDisp
 {
     class Servidor
@@ -18,6 +19,7 @@ namespace BazarDisp
         static bool ejecucion = true;
         string[] dips = new string[] { "One Plus", "Motorola", "Iphone X", "Xiaomi MI MIX 2", "Samsung S9" };
         List<string> dispositivos = new List<string>();
+        FormBienvenida bazar = new FormBienvenida();
 
         // CODE
         public Servidor()
@@ -44,7 +46,6 @@ namespace BazarDisp
                         Socket cliente = s.Accept();
                         Thread hilo = new Thread(HiloCliente);
                         hilo.Start(cliente);
-                        hilo.Join();  
                     }
                 }
 
@@ -67,7 +68,6 @@ namespace BazarDisp
         {
             //
             string mensajeCliente = "";
-            FormBienvenida bazar = new FormBienvenida();
             Socket clienteH = (Socket)socket;
             IPEndPoint ieCliente = (IPEndPoint)clienteH.RemoteEndPoint;
             //
@@ -84,9 +84,9 @@ namespace BazarDisp
             }
             //
 
-            //string bienvenida = "BIENVENIDO AL SERVIDOR " + bazar.txtNombreCliente.Text;
-            //Console.WriteLine(bazar.txtNombreCliente.Text);
-            //sw.WriteLine(bienvenida);
+            string bienvenida = "BIENVENIDO AL SERVIDOR " + bazar.txtNombreCliente.Text;
+            Console.WriteLine(bazar.txtNombreCliente.Text);
+            sw.WriteLine(bienvenida);
             //
             sw.WriteLine("Al Presionar Los Botones: \r\n "+ "Dispositivos - Visualice todos los dipositivos que hay ahora Mismo \r\n"+ "Salir - Finalizar Sesion");
 
@@ -96,17 +96,18 @@ namespace BazarDisp
                 Console.WriteLine(bazar.txtNombreCliente.Text + ": " + mensajeCliente);
                 if (mensajeCliente != null)
                 {
-                    mensajeCliente = "#salir";
+                    mensajeCliente = "Salir";
                     
                     /////////
                     switch (mensajeCliente.ToLower())
                     {
                         case "Dispositivos":
-                            sw.WriteLine("LISTA");
-                            foreach (string item in dispositivos)
-                            {
-                                sw.WriteLine(item);
-                            }
+                            BaseDatos bd = new BaseDatos();
+                            //sw.WriteLine("LISTA");
+                            //foreach (string item in dispositivos)
+                            //{
+                            //    sw.WriteLine(item);
+                            //}
                             break;
 
                         case "#salir":

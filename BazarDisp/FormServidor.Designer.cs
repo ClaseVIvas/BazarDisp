@@ -149,8 +149,8 @@
         private System.Windows.Forms.Button btnPedido;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtbServidor;
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.Label lblComandos;
+        public System.Windows.Forms.TextBox txtbServidor;
     }
 }
