@@ -24,8 +24,14 @@ namespace BazarDisp
         // CODE
         public Servidor()
         {
-            Thread hilo = new Thread(Inicio);
-            hilo.Start();
+            while (ejecucion)
+            {
+                if (ejecucion)
+                {
+                    Thread hilo = new Thread(Inicio);
+                    hilo.Start();
+                } 
+            }
         }
 
 
@@ -110,7 +116,7 @@ namespace BazarDisp
                             //}
                             break;
 
-                        case "#salir":
+                        case "Salir":
                             sw.WriteLine("HASTA LA PROXIMA " + bazar.txtNombreCliente.Text + " --");
                             ejecucion = false;
                             break;

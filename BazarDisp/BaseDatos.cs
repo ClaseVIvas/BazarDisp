@@ -13,7 +13,8 @@ namespace BazarDisp
         public BaseDatos()
         {
             FormServidor serv = new FormServidor();
-            string conexion = "Provider = Microsoft.Jet.OleDb.4.0;Data Source = C:\\Users\\phili\\OneDrive\\PROYECTO DE DI\\BASE DE DATOS\\BazarDisp.xlsx;Extended Properties = \"Excel 8.0;HDR = Yes\"";
+            //Extended Properties = \"Excel 8.0;HDR = Yes\"
+            string conexion = "Provider = Microsoft.Jet.OleDb.4.0;Data Source = C:\\Users\\phili\\OneDrive\\PROYECTO DE DI\\BASE DE DATOS\\BazarDisp.xlsx;";
             OleDbConnection conector = default(OleDbConnection);
             conector = new OleDbConnection(conexion);
             conector.Open();
@@ -26,7 +27,17 @@ namespace BazarDisp
             //
             DataSet ds = new DataSet();
             adaptador.Fill(ds);
-            serv.txtbServidor.Text = "" + ds.Tables[0];
+
+            foreach (DataTable t in ds.Tables)
+            {
+                serv.txtbServidor.Text = String.Format("\nTabla {0}", t.TableName);
+                foreach (DataColumn c in t.Columns)
+                {
+                    serv.txtbServidor.Text = String.Format("\tCampo {0} de tipo {1}", c.ColumnName, c.DataType.Name);
+                }
+            }
+
+          //  serv.txtbServidor.Text = "" + ds.Tables[0];
             //
             conector.Close();
         }

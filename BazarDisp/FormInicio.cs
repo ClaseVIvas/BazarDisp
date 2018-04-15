@@ -35,37 +35,42 @@ namespace BazarDisp
         {
             bazar = new FormBienvenida();
             aceptar = true;
-            do
+            try
             {
-                DialogResult resp = bazar.ShowDialog();
-                switch (resp)
+                do
                 {
-                    case DialogResult.OK:
-                        if (bazar.txtNombreCliente.Text == "")
-                        {
-                            aceptar = false;
-                            MessageBox.Show("Introduce Un Nombre Porfavor", "BazarDisp.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            aceptar = true;
-                            lblCliente.Text = "BIENVENIDO " + bazar.txtNombreCliente.Text;
-                            CreadImagenes();
-                        }
-                        break;
-                    case DialogResult.Cancel:
-                        Close();
-                        break;
-                }
-            } while (!aceptar);
+                    DialogResult resp = bazar.ShowDialog();
+                    switch (resp)
+                    {
+                        case DialogResult.OK:
+                            if (bazar.txtNombreCliente.Text == "")
+                            {
+                                aceptar = false;
+                                MessageBox.Show("Introduce Un Nombre Porfavor", "BazarDisp.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                aceptar = true;
+                                lblCliente.Text = "BIENVENIDO " + bazar.txtNombreCliente.Text;
+                                CreadImagenes();
+                            }
+                            break;
+                        case DialogResult.Cancel:
+                            Close();
+                            break;
+                    }
+                } while (!aceptar);
+            }
+            catch (ObjectDisposedException d)
+            {
+                MessageBox.Show("BAZARDISP", "¡ Hasta la Próxima !", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         public void CreadImagenes()
         {
             rutaMarcas = "image_marcas";
             imagenes_Marcas = new DirectoryInfo(rutaMarcas);
-            x = 10;
-            y = 0;
 
             //foreach (FileInfo item in imagenes_Marcas.GetFiles("*png"))
             //{
@@ -83,16 +88,17 @@ namespace BazarDisp
             {
                 if (i % 4 == 0)
                 {
-                    x = 5;
+                    x = 4;
                     y += 139;
                 }
                 PictureBox pictureBox = new PictureBox();
                 pictureBox.Size = new Size(200, 133);
                 pictureBox.Location = new Point(x, y);
+                Console.WriteLine("POSICION X -> " + x);
+                Console.WriteLine("POSICION Y -> " + y);
                 Console.WriteLine(i + ".png");
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
-                // Controls.Add(pictureBox);
-                panel1.Controls.Add(pictureBox);
+                this.Controls.Add(pictureBox);
                 x += 208;
             }
         }
