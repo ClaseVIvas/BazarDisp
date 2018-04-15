@@ -22,6 +22,7 @@ namespace BazarDisp
         Socket servidor = null;
         Servidor servidorBazar;
         FormBienvenida bienvenida;
+        //
 
         //CODE
         public FormServidor()
