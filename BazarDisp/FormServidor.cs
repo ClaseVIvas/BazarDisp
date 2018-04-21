@@ -20,8 +20,6 @@ namespace BazarDisp
         int puertoCliente = 31416;
         string mensajeServidor;
         Socket servidor = null;
-        Servidor servidorBazar;
-        FormBienvenida bienvenida;
         //
 
         //CODE
@@ -34,12 +32,12 @@ namespace BazarDisp
         {
             try
             { 
-                //
                 servidor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ie = new IPEndPoint(IPAddress.Parse(IPCliente), puertoCliente);
-                servidor.Connect(ie);          
-            }
 
+                servidor.Connect(ie);
+                MessageBox.Show("SERVIDOR ACTIVADO");
+            }
             catch (SocketException e)
             {
                 MessageBox.Show(String.Format("Error de conexión con servidor: {0} \r\n Código de error: {1}({2})", e.Message, (SocketError)e.ErrorCode, e.ErrorCode), "BAZARDISP");
@@ -50,26 +48,21 @@ namespace BazarDisp
         private void PulsaComando(object sender, EventArgs e)
         {
             try
-            { 
+            {
+                Conexion();
                 txtbServidor.Text = "";
                 Button btnComando = sender as Button;
                 NetworkStream ns = new NetworkStream(servidor);
                 StreamReader sr = new StreamReader(ns);
                 StreamWriter sw = new StreamWriter(ns);
 
-              
                 //ENVIAMOS LOS DATOS AL SERVIDOR
                 sw.WriteLine(btnComando.Text);
                 sw.Flush();
-
                 //
                 mensajeServidor = sr.ReadLine();
-                while (mensajeServidor != null)
-                {
-                    txtbServidor.Text = mensajeServidor;
-                }
+                txtbServidor.Text += mensajeServidor;
                 //
-
                 ns.Close();
                 sr.Close();
                 sw.Close();
@@ -84,43 +77,14 @@ namespace BazarDisp
             }
             catch (IOException a)
             {
-                MessageBox.Show("ERROR: "+a.Message);
+                MessageBox.Show("ERROR: " + a.Message);
             }
         }
-
 
         private void btnPedido_Click(object sender, EventArgs e)
         {
             FormPedido pedido = new FormPedido();
             pedido.Show();
-        }
-
-        private void btnIniciar_Click(object sender, EventArgs e)
-        {
-            bienvenida = new FormBienvenida();
-            servidorBazar = new Servidor();
-            Conexion();
-            MessageBox.Show("SERVIDOR ACTIVADO");
-            try
-            {
-                NetworkStream ns = new NetworkStream(servidor);
-                StreamReader sr = new StreamReader(ns);
-                //
-                string mensaje = sr.ReadLine();
-                if(mensaje != null)
-                {
-                    txtbServidor.Text = mensaje + " - " +bienvenida.txtNombreCliente.Text;
-                    MessageBox.Show(txtbServidor.Text);
-
-                    ns.Close();
-                    sr.Close();
-                }
-            }
-            catch (IOException a)
-            {
-                MessageBox.Show("ERROR: " + a.Message);
-            }
-            
         }
     }
 }

@@ -17,12 +17,13 @@ namespace BazarDisp
     public partial class FormInicio : Form
     {
         // DECLARACION DE VARIABLES
-        FormBienvenida bazar;
+        static FormBienvenida bazar = new FormBienvenida();
         FormServidor serv;
         string rutaMarcas;
         DirectoryInfo imagenes_Marcas;
         int x, y;
         bool aceptar;
+        public string nombreCliente;
 
 
         // CODE
@@ -33,7 +34,6 @@ namespace BazarDisp
 
         private void FormInicio_Load(object sender, EventArgs e)
         {
-            bazar = new FormBienvenida();
             aceptar = true;
             try
             {
@@ -51,7 +51,8 @@ namespace BazarDisp
                             else
                             {
                                 aceptar = true;
-                                lblCliente.Text = "BIENVENIDO " + bazar.txtNombreCliente.Text;
+                                nombreCliente = bazar.txtNombreCliente.Text;
+                                lblCliente.Text = "BIENVENIDO " + nombreCliente;
                                 CreadImagenes();
                             }
                             break;

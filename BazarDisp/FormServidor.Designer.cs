@@ -34,15 +34,15 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtbServidor = new System.Windows.Forms.TextBox();
-            this.btnIniciar = new System.Windows.Forms.Button();
             this.lblComandos = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnListar
             // 
             this.btnListar.AutoSize = true;
             this.btnListar.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListar.Location = new System.Drawing.Point(641, 297);
+            this.btnListar.Location = new System.Drawing.Point(642, 203);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(148, 46);
             this.btnListar.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             this.btnPedido.AutoSize = true;
             this.btnPedido.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedido.Location = new System.Drawing.Point(658, 349);
+            this.btnPedido.Location = new System.Drawing.Point(659, 255);
             this.btnPedido.Name = "btnPedido";
             this.btnPedido.Size = new System.Drawing.Size(114, 52);
             this.btnPedido.TabIndex = 2;
@@ -65,7 +65,7 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(684, 407);
+            this.btnSalir.Location = new System.Drawing.Point(685, 313);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(62, 53);
             this.btnSalir.TabIndex = 3;
@@ -94,40 +94,37 @@
             this.txtbServidor.ReadOnly = true;
             this.txtbServidor.Size = new System.Drawing.Size(513, 480);
             this.txtbServidor.TabIndex = 4;
-            this.txtbServidor.Text = "SERVIDOR BAZARDISP - ACTIVO";
             this.txtbServidor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnIniciar
-            // 
-            this.btnIniciar.AutoSize = true;
-            this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIniciar.Font = new System.Drawing.Font("Rockwell", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciar.Location = new System.Drawing.Point(641, 138);
-            this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(149, 46);
-            this.btnIniciar.TabIndex = 6;
-            this.btnIniciar.Text = "INICAR SERVIDOR";
-            this.btnIniciar.UseVisualStyleBackColor = true;
-            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // lblComandos
             // 
             this.lblComandos.AutoSize = true;
             this.lblComandos.Font = new System.Drawing.Font("Script MT Bold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComandos.Location = new System.Drawing.Point(623, 259);
+            this.lblComandos.Location = new System.Drawing.Point(624, 165);
             this.lblComandos.Name = "lblComandos";
             this.lblComandos.Size = new System.Drawing.Size(179, 24);
             this.lblComandos.TabIndex = 7;
             this.lblComandos.Text = "Comados del Servidor";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Rockwell", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(550, 396);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(368, 36);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Nota:\n Haz Click En \'Dispositivos\' Para Iniciar el Servidor.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormServidor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(911, 480);
+            this.ClientSize = new System.Drawing.Size(922, 480);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblComandos);
-            this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtbServidor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSalir);
@@ -149,8 +146,8 @@
         private System.Windows.Forms.Button btnPedido;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.Label lblComandos;
         public System.Windows.Forms.TextBox txtbServidor;
+        private System.Windows.Forms.Label label1;
     }
 }

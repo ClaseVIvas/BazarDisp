@@ -8,41 +8,24 @@ using System.Net.Sockets;
 using System.Threading;
 using System.IO;
 
-
-namespace BazarDisp
+namespace ServidroBazarDisp
 {
-    class Servidor
+    class Program
     {
-
         // DECLARACION DE VARIABLES
         static int puerto = 31416;
         static bool ejecucion = true;
-        string[] dips = new string[] { "One Plus", "Motorola", "Iphone X", "Xiaomi MI MIX 2", "Samsung S9" };
-        List<string> dispositivos = new List<string>();
-        FormBienvenida bazar = new FormBienvenida();
+        static Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        static string[] dips = new string[] { "One Plus", "Motorola", "Iphone X", "Xiaomi MI MIX 2", "Samsung S9" };
+        static List<string> dispositivos = new List<string>();
 
-        // CODE
-        public Servidor()
+        static void Main(string[] args)
         {
-            while (ejecucion)
-            {
-                if (ejecucion)
-                {
-                    Thread hilo = new Thread(Inicio);
-                    hilo.Start();
-                } 
-            }
-        }
-
-
-        public void Inicio()
-        {
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
             {
                 s.Bind(ie);
-                s.Listen(3);
+                s.Listen(5);
                 Console.WriteLine("\t\t\t\t -- SERVIDOR BAZARDISP -- Puerto -> " + ie.Port);
                 //
                 while (ejecucion)
@@ -52,9 +35,9 @@ namespace BazarDisp
                         Socket cliente = s.Accept();
                         Thread hilo = new Thread(HiloCliente);
                         hilo.Start(cliente);
+                        hilo.Join();
                     }
                 }
-
             }
             catch (SocketException e) when (e.ErrorCode == (int)SocketError.ConnectionRefused)
             {
@@ -64,16 +47,16 @@ namespace BazarDisp
                 ie = new IPEndPoint(IPAddress.Any, puerto);
             }
             // Cerramos la conexion del Servidor
-            s.Close();
             Console.WriteLine("Terminando Conexion....");
+            s.Close();
             Console.ReadLine();
-
         }
 
-        public void HiloCliente(object socket)
+
+       static public void HiloCliente(object socket)
         {
             //
-            string mensajeCliente = "";
+            string mensajeCliente;
             Socket clienteH = (Socket)socket;
             IPEndPoint ieCliente = (IPEndPoint)clienteH.RemoteEndPoint;
             //
@@ -83,32 +66,32 @@ namespace BazarDisp
             StreamWriter sw = new StreamWriter(ns);
             StreamReader sr = new StreamReader(ns);
             sw.AutoFlush = true;
-            //
-            foreach (string item in dips)
-            {
-                dispositivos.Add(item);
-            }
-            //
-
-            string bienvenida = "BIENVENIDO AL SERVIDOR " + bazar.txtNombreCliente.Text;
-            Console.WriteLine(bazar.txtNombreCliente.Text);
-            sw.WriteLine(bienvenida);
-            //
-            sw.WriteLine("Al Presionar Los Botones: \r\n "+ "Dispositivos - Visualice todos los dipositivos que hay ahora Mismo \r\n"+ "Salir - Finalizar Sesion");
-
             try
             {
                 mensajeCliente = sr.ReadLine();
-                Console.WriteLine(bazar.txtNombreCliente.Text + ": " + mensajeCliente);
+                Console.WriteLine(ieCliente.Address + ": " + mensajeCliente);
                 if (mensajeCliente != null)
                 {
-                    mensajeCliente = "Salir";
-                    
                     /////////
-                    switch (mensajeCliente.ToLower())
+                    switch (mensajeCliente)
                     {
                         case "Dispositivos":
-                            BaseDatos bd = new BaseDatos();
+                            //
+                            foreach (string item in dips)
+                            {
+                                dispositivos.Add(item);
+                            }
+                            //
+                            string bienvenida = "BIENVENIDO AL SERVIDOR " + ieCliente.Address;
+                            sw.WriteLine(bienvenida);
+                            //
+                            sw.WriteLine("Al Presionar Los Botones: \r\n " + "Dispositivos - Visualice todos los dipositivos que hay ahora Mismo \r\n" + "Salir - Finalizar Sesion");
+                            foreach (String item in dispositivos)
+                            {
+                                sw.WriteLine("lista de dispositivos:" + item);
+                            }
+
+                            //BaseDatos bd = new BaseDatos();
                             //sw.WriteLine("LISTA");
                             //foreach (string item in dispositivos)
                             //{
@@ -117,7 +100,7 @@ namespace BazarDisp
                             break;
 
                         case "Salir":
-                            sw.WriteLine("HASTA LA PROXIMA " + bazar.txtNombreCliente.Text + " --");
+                            sw.WriteLine("HASTA LA PROXIMA " + ieCliente.Address + " --");
                             ejecucion = false;
                             break;
                         default:
@@ -125,25 +108,23 @@ namespace BazarDisp
                             break;
                     }
                 }
-                ejecucion = false;
             }
             catch (IOException)
             {
-                Console.WriteLine("SE HA DESCONECTADO EL AGENTE");
+                Console.WriteLine("SE HA DESCONECTADO EL CLIENTE");
 
             }
             catch (ObjectDisposedException)
             {
-                Console.WriteLine(bazar.txtNombreCliente.Text + " SE HA DESCONECTADO");
+                Console.WriteLine(ieCliente.Address + " SE HA DESCONECTADO");
 
             }
             // FINALIZAMOS CONEXION
             Console.WriteLine("\t Conexion Finalizada con {0}:{1}", ieCliente.Address, ieCliente.Port);
-            ns.Close();
             sw.Close();
             sr.Close();
+            ns.Close();
             clienteH.Close();
         }
     }
 }
-
