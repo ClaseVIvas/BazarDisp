@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
-
+using System.ComponentModel;
 namespace ServidroBazarDisp
 {
     class Program
@@ -20,6 +20,15 @@ namespace ServidroBazarDisp
         static List<string> dispositivos = new List<string>();
 
         static void Main(string[] args)
+        {
+            BackgroundWorker task = new BackgroundWorker();
+            task.DoWork += Inicio;
+            task.RunWorkerAsync();
+           // Console.ReadLine();
+
+        }
+
+        static public void Inicio(object o, DoWorkEventArgs e)
         {
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
@@ -39,7 +48,7 @@ namespace ServidroBazarDisp
                     }
                 }
             }
-            catch (SocketException e) when (e.ErrorCode == (int)SocketError.ConnectionRefused)
+            catch (SocketException v) when (v.ErrorCode == (int)SocketError.ConnectionRefused)
             {
                 Console.WriteLine("Puerto {0} libre", puerto);
                 Console.WriteLine("Error asignando puerto {0} , probando el siguiente ", puerto);
@@ -49,11 +58,9 @@ namespace ServidroBazarDisp
             // Cerramos la conexion del Servidor
             Console.WriteLine("Terminando Conexion....");
             s.Close();
-            Console.ReadLine();
         }
 
-
-       static public void HiloCliente(object socket)
+        static public void HiloCliente(object socket)
         {
             //
             string mensajeCliente;
@@ -61,11 +68,17 @@ namespace ServidroBazarDisp
             IPEndPoint ieCliente = (IPEndPoint)clienteH.RemoteEndPoint;
             //
             Console.WriteLine("\t -- Cliente Conectado {0} en el Puerto {1}", ieCliente.Address, ieCliente.Port);
+            foreach (string item in dips)
+            {
+                dispositivos.Add(item);
+            }
             //
             NetworkStream ns = new NetworkStream(clienteH);
             StreamWriter sw = new StreamWriter(ns);
             StreamReader sr = new StreamReader(ns);
-            sw.AutoFlush = true;
+
+            sw.WriteLine("BIENVENIDO AL ALMACEN\r\n"+ "Estos Son Los Actuales Dispositivos que estan En Stock\r\n");
+            sw.Flush();
             try
             {
                 mensajeCliente = sr.ReadLine();
@@ -76,19 +89,14 @@ namespace ServidroBazarDisp
                     switch (mensajeCliente)
                     {
                         case "Dispositivos":
+                            int cont = 1;
                             //
-                            foreach (string item in dips)
-                            {
-                                dispositivos.Add(item);
-                            }
-                            //
-                            string bienvenida = "BIENVENIDO AL SERVIDOR " + ieCliente.Address;
-                            sw.WriteLine(bienvenida);
-                            //
-                            sw.WriteLine("Al Presionar Los Botones: \r\n " + "Dispositivos - Visualice todos los dipositivos que hay ahora Mismo \r\n" + "Salir - Finalizar Sesion");
                             foreach (String item in dispositivos)
                             {
-                                sw.WriteLine("lista de dispositivos:" + item);
+                                sw.WriteLine(cont+" -> "+item+"\r\n");
+                                sw.Flush();
+                                cont++;
+                                Console.WriteLine(item);
                             }
 
                             //BaseDatos bd = new BaseDatos();
@@ -109,9 +117,9 @@ namespace ServidroBazarDisp
                     }
                 }
             }
-            catch (IOException)
+            catch (IOException a)
             {
-                Console.WriteLine("SE HA DESCONECTADO EL CLIENTE");
+                Console.WriteLine("SE HA DESCONECTADO EL CLIENTE: -> " + a.Message);
 
             }
             catch (ObjectDisposedException)
@@ -126,5 +134,6 @@ namespace ServidroBazarDisp
             ns.Close();
             clienteH.Close();
         }
+
     }
 }

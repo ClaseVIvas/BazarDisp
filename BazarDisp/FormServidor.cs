@@ -34,7 +34,6 @@ namespace BazarDisp
             { 
                 servidor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ie = new IPEndPoint(IPAddress.Parse(IPCliente), puertoCliente);
-
                 servidor.Connect(ie);
                 MessageBox.Show("SERVIDOR ACTIVADO");
             }
@@ -60,8 +59,8 @@ namespace BazarDisp
                 sw.WriteLine(btnComando.Text);
                 sw.Flush();
                 //
-                mensajeServidor = sr.ReadLine();
-                txtbServidor.Text += mensajeServidor;
+                mensajeServidor = sr.ReadToEnd();
+                txtbServidor.Text = mensajeServidor;
                 //
                 ns.Close();
                 sr.Close();

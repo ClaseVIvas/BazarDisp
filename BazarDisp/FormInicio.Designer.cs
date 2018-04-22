@@ -77,7 +77,7 @@
             this.pnlServidor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlServidor.Controls.Add(this.btnIniciaServidor);
             this.pnlServidor.Controls.Add(this.lblAyuda);
-            this.pnlServidor.Location = new System.Drawing.Point(917, 356);
+            this.pnlServidor.Location = new System.Drawing.Point(886, 356);
             this.pnlServidor.Name = "pnlServidor";
             this.pnlServidor.Size = new System.Drawing.Size(317, 90);
             this.pnlServidor.TabIndex = 4;
@@ -87,7 +87,7 @@
             this.txtExplicacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtExplicacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtExplicacion.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExplicacion.Location = new System.Drawing.Point(886, 139);
+            this.txtExplicacion.Location = new System.Drawing.Point(859, 139);
             this.txtExplicacion.Multiline = true;
             this.txtExplicacion.Name = "txtExplicacion";
             this.txtExplicacion.ReadOnly = true;
@@ -101,7 +101,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1272, 558);
+            this.ClientSize = new System.Drawing.Size(1272, 586);
             this.Controls.Add(this.txtExplicacion);
             this.Controls.Add(this.pnlServidor);
             this.Controls.Add(this.lblCliente);
@@ -111,7 +111,6 @@
             this.Name = "FormInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BAZARDISP";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormInicio_Load);
             this.pnlServidor.ResumeLayout(false);
             this.pnlServidor.PerformLayout();
