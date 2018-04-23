@@ -11,7 +11,6 @@ namespace ServidroBazarDisp
         /// </summary>
         public string Mensaje;
 
-
         /// <summary>
         /// Conexion del usuario
         /// </summary>
@@ -32,12 +31,15 @@ namespace ServidroBazarDisp
         /// </summary>
         private StreamReader sr;
 
-
-
+        /// <summary>
+        /// Inicializa una instancia de la clase <see cref="T:ServidroBazarDisp.Cliente"/> .
+        /// </summary>
+        /// <param name="s">S.</param>
         public Cliente(Socket s)
         {
+            socket = s;
+            generarFlujos();
         }
-
 
         /// <summary>
         /// Inicializa los flujos del usuario de su Socket
