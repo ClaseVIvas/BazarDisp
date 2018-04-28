@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Net.Sockets;
-using System.Net;
 using System.IO;
 
 namespace BazarDisp
@@ -22,9 +13,12 @@ namespace BazarDisp
         string rutaMarcas;
         DirectoryInfo imagenes_Marcas;
         int x, y;
-        bool aceptar;
-        public string nombreCliente;
-
+        int oriX = 4;
+        int numColumnas = 4;
+        int separacionHorizontal = 208;
+        int separaciónVertical = 139;
+        Size tamañoImagenes = new Size(200, 133);
+        bool aceptar = true;
 
         // CODE
         public FormInicio()
@@ -34,13 +28,11 @@ namespace BazarDisp
 
         private void FormInicio_Load(object sender, EventArgs e)
         {
-            aceptar = true;
             try
             {
                 do
                 {
-                    DialogResult resp = bazar.ShowDialog();
-                    switch (resp)
+                    switch (bazar.ShowDialog())
                     {
                         case DialogResult.OK:
                             if (bazar.txtNombreCliente.Text == "")
@@ -51,8 +43,7 @@ namespace BazarDisp
                             else
                             {
                                 aceptar = true;
-                                nombreCliente = bazar.txtNombreCliente.Text;
-                                lblCliente.Text = "BIENVENIDO " + nombreCliente;
+                                lblCliente.Text = "BIENVENIDO " + bazar.txtNombreCliente.Text;
                                 CreadImagenes();
                             }
                             break;
@@ -70,8 +61,7 @@ namespace BazarDisp
 
         public void CreadImagenes()
         {
-            rutaMarcas = "image_marcas";
-            imagenes_Marcas = new DirectoryInfo(rutaMarcas);
+            imagenes_Marcas = new DirectoryInfo("image_marcas");
 
             //foreach (FileInfo item in imagenes_Marcas.GetFiles("*png"))
             //{
@@ -87,43 +77,36 @@ namespace BazarDisp
 
             for (int i = 0; i < 20; i++)
             {
-                if (i % 4 == 0)
+                if (i % numColumnas == 0)
                 {
-                    x = 4;
-                    y += 139;
+                    x = oriX;
+                    y += separaciónVertical;
                 }
                 PictureBox pictureBox = new PictureBox();
-                pictureBox.Size = new Size(200, 133);
+                pictureBox.Size = tamañoImagenes;
                 pictureBox.Location = new Point(x, y);
-                Console.WriteLine("POSICION X -> " + x);
-                Console.WriteLine("POSICION Y -> " + y);
-                Console.WriteLine(i + ".png");
+                Console.WriteLine("POSICION X -> " + x + "\n" + "POSICION Y -> " + y + "\n" + i + ".png");
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
-                this.Controls.Add(pictureBox);
-                x += 208;
+                Controls.Add(pictureBox);
+                x += separacionHorizontal;
             }
         }
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)
         {
             serv = new FormServidor();
-            DialogResult resp;
             try
             {
-                resp = serv.ShowDialog();
-                switch (resp)
+                switch (serv.ShowDialog())
                 {
                     case DialogResult.OK:
-
                         break;
                     case DialogResult.Cancel:
                         serv.Close();
                         break;
                 }
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception) { }
         }
     }
 }
