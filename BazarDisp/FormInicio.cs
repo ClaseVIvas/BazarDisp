@@ -13,7 +13,7 @@ namespace BazarDisp
         string rutaMarcas;
         DirectoryInfo imagenes_Marcas;
         int x, y;
-        int oriX = 4;
+        int oriX = 3;
         int numColumnas = 4;
         int separacionHorizontal = 208;
         int separaciónVertical = 139;
@@ -87,9 +87,15 @@ namespace BazarDisp
                 pictureBox.Location = new Point(x, y);
                 Console.WriteLine("POSICION X -> " + x + "\n" + "POSICION Y -> " + y + "\n" + i + ".png");
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
+                pictureBox.MouseClick += new MouseEventHandler(ClickBoton);
                 Controls.Add(pictureBox);
                 x += separacionHorizontal;
             }
+        }
+
+        public void ClickBoton(object sender, MouseEventArgs e)
+        {
+
         }
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)
