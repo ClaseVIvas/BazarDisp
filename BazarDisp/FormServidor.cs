@@ -48,6 +48,7 @@ namespace BazarDisp
         {
             try
             {
+                ServidorBazar server = new ServidorBazar();
                 Conexion();
                 txtbServidor.Text = "";
                 Button btnComando = sender as Button;
@@ -76,7 +77,7 @@ namespace BazarDisp
             }
             catch (IOException a)
             {
-                MessageBox.Show("ERROR: " + a.Message);
+                MessageBox.Show("ERROR FormServidor: " + a.Message);
             }
         }
 
@@ -84,6 +85,12 @@ namespace BazarDisp
         {
             FormPedido pedido = new FormPedido();
             pedido.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BaseDatos bd = new BaseDatos();
+            MessageBox.Show("BASE DE DATOS ACTIVA");
         }
     }
 }

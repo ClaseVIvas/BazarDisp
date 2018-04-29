@@ -15,17 +15,17 @@ namespace ServidroBazarDisp
         static Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         static string[] dips = { "One Plus", "Motorola", "Iphone X", "Xiaomi MI MIX 2", "Samsung S9" };
         static List<string> dispositivos = new List<string>();
+        private static NetworkStream ns;
+        private static StreamReader sr;
+        private static StreamWriter sw;
 
         static void Main(string[] args)
         {
-            BackgroundWorker task = new BackgroundWorker();
-            task.DoWork += Inicio;
-            task.RunWorkerAsync();
-           // Console.ReadLine();
+            Inicio();
 
         }
 
-        static public void Inicio(object o, DoWorkEventArgs e)
+        static public void Inicio()
         {
             IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
@@ -59,32 +59,38 @@ namespace ServidroBazarDisp
 
         static public void HiloCliente(object socket)
         {
-            Cliente cliente = new Cliente(socket as Socket);
+            Socket socketCliente = socket as Socket;
             IPEndPoint ieCliente = (IPEndPoint)(socket as Socket).RemoteEndPoint;
+            string mensajeCliente = "";
+            ns = new NetworkStream(socketCliente);
+            sr = new StreamReader(ns);
+            sw = new StreamWriter(ns);
+            sw.AutoFlush = true;
             //
             Console.WriteLine("\t -- Cliente Conectado {0} en el Puerto {1}", ieCliente.Address, ieCliente.Port);
             foreach (string item in dips)
             {
                 dispositivos.Add(item);
             }
-            cliente.mandarMensaje("BIENVENIDO AL ALMACEN\r\n" + "Estos Son Los Actuales Dispositivos que estan En Stock\r\n");
+            sw.WriteLine("BIENVENIDO AL ALMACEN\r\n" + "Estos Son Los Actuales Dispositivos que estan En Stock\r\n");
+
+            mensajeCliente = sr.ReadLine();
             try
-            {             
-                Console.WriteLine(ieCliente.Address + ": " + cliente.Mensaje);
-                if (cliente.Mensaje != null)
+            {
+                Console.WriteLine(ieCliente.Address + ": " + mensajeCliente);
+                if (mensajeCliente != null)
                 {
-                    switch (cliente.Mensaje)
+                    switch (mensajeCliente)
                     {
                         case "Dispositivos":
                             int cont = 1;
                             //
                             foreach (String item in dispositivos)
                             {
-                                cliente.mandarMensaje(cont + " -> " + item + "\r\n");
+                                sw.WriteLine(cont + " -> " + item + "\r\n");
                                 cont++;
                                 Console.WriteLine(item);
                             }
-
                             //BaseDatos bd = new BaseDatos();
                             //sw.WriteLine("LISTA");
                             //foreach (string item in dispositivos)
@@ -93,11 +99,11 @@ namespace ServidroBazarDisp
                             //}
                             break;
                         case "Salir":
-                            cliente.mandarMensaje("HASTA LA PROXIMA " + ieCliente.Address + " --");
+                            sw.WriteLine("HASTA LA PROXIMA " + ieCliente.Address + " --");
                             ejecucion = false;
                             break;
                         default:
-                            cliente.mandarMensaje("Comando No Reconocido");
+                            sw.WriteLine("Comando No Reconocido");
                             break;
                     }
                 }
@@ -114,7 +120,10 @@ namespace ServidroBazarDisp
             }
             // FINALIZAMOS CONEXION
             Console.WriteLine("\t Conexion Finalizada con {0}:{1}", ieCliente.Address, ieCliente.Port);
-            cliente.cerrarSesion();
+            sr.Close();
+            sw.Close();
+            ns.Close();
+            socketCliente.Close();
         }
 
     }

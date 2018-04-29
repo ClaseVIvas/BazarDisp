@@ -36,6 +36,7 @@
             this.txtbServidor = new System.Windows.Forms.TextBox();
             this.lblComandos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnListar
@@ -117,12 +118,24 @@
             this.label1.Text = "Nota:\n Haz Click En \'Dispositivos\' Para Iniciar el Servidor.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(539, 370);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "BaseDeDatos";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormServidor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(922, 480);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblComandos);
             this.Controls.Add(this.txtbServidor);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.Label lblComandos;
         public System.Windows.Forms.TextBox txtbServidor;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
