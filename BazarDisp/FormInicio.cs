@@ -88,6 +88,8 @@ namespace BazarDisp
                 Console.WriteLine("POSICION X -> " + x + "\n" + "POSICION Y -> " + y + "\n" + i + ".png");
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
                 pictureBox.MouseClick += new MouseEventHandler(ClickBoton);
+                pictureBox.Tag = "Caja - "+ i;
+                Console.WriteLine(pictureBox.Tag = "Caja - " + i);
                 Controls.Add(pictureBox);
                 x += separacionHorizontal;
             }
@@ -95,6 +97,25 @@ namespace BazarDisp
 
         public void ClickBoton(object sender, MouseEventArgs e)
         {
+            PictureBox pctBox = sender as PictureBox;
+
+            if (pctBox.Tag.Equals("Caja - 0"))
+            {
+                MessageBox.Show("ENTRA - " + pctBox.Tag );
+            }
+
+            if (pctBox.Tag.Equals("Caja - 1"))
+            {
+                MessageBox.Show("ENTRA - " + pctBox.Tag);
+            }
+
+            if (pctBox.Tag.Equals("Caja - 2"))
+            {
+                MessageBox.Show("ENTRA - " + pctBox.Tag);
+            }
+
+
+
 
         }
 
@@ -106,6 +127,7 @@ namespace BazarDisp
                 switch (serv.ShowDialog())
                 {
                     case DialogResult.OK:
+                        
                         break;
                     case DialogResult.Cancel:
                         serv.Close();
