@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDispositivos));
             this.lblCliente = new System.Windows.Forms.Label();
-            this.lblComandos = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtExplicacion = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.lblCaracteristicas = new System.Windows.Forms.Label();
+            this.pnlPantalla = new System.Windows.Forms.Panel();
+            this.pctbPantalla = new System.Windows.Forms.PictureBox();
+            this.txtPantalla = new System.Windows.Forms.TextBox();
+            this.pnlCamara = new System.Windows.Forms.Panel();
+            this.pctbCamara = new System.Windows.Forms.PictureBox();
+            this.txtCamara = new System.Windows.Forms.TextBox();
+            this.pnlBateria = new System.Windows.Forms.Panel();
+            this.pctbBateria = new System.Windows.Forms.PictureBox();
+            this.txtBateria = new System.Windows.Forms.TextBox();
+            this.pnlSistema = new System.Windows.Forms.Panel();
+            this.pctbSistema = new System.Windows.Forms.PictureBox();
+            this.txtSistema = new System.Windows.Forms.TextBox();
+            this.pctbDispositivo = new System.Windows.Forms.PictureBox();
+            this.pnlPantalla.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbPantalla)).BeginInit();
+            this.pnlCamara.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbCamara)).BeginInit();
+            this.pnlBateria.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbBateria)).BeginInit();
+            this.pnlSistema.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbSistema)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbDispositivo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCliente
@@ -66,150 +67,155 @@
             this.lblCliente.TabIndex = 2;
             this.lblCliente.Text = "DISPOSITIVO";
             // 
-            // lblComandos
+            // lblCaracteristicas
             // 
-            this.lblComandos.AutoSize = true;
-            this.lblComandos.Font = new System.Drawing.Font("Script MT Bold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComandos.Location = new System.Drawing.Point(495, 80);
-            this.lblComandos.Name = "lblComandos";
-            this.lblComandos.Size = new System.Drawing.Size(219, 24);
-            this.lblComandos.TabIndex = 8;
-            this.lblComandos.Text = "Características Principales";
+            this.lblCaracteristicas.AutoSize = true;
+            this.lblCaracteristicas.Font = new System.Drawing.Font("Script MT Bold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCaracteristicas.Location = new System.Drawing.Point(495, 80);
+            this.lblCaracteristicas.Name = "lblCaracteristicas";
+            this.lblCaracteristicas.Size = new System.Drawing.Size(219, 24);
+            this.lblCaracteristicas.TabIndex = 8;
+            this.lblCaracteristicas.Text = "Características Principales";
             // 
-            // panel1
+            // pnlPantalla
             // 
-            this.panel1.Controls.Add(this.txtExplicacion);
-            this.panel1.Location = new System.Drawing.Point(367, 135);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(228, 157);
-            this.panel1.TabIndex = 9;
+            this.pnlPantalla.Controls.Add(this.pctbPantalla);
+            this.pnlPantalla.Controls.Add(this.txtPantalla);
+            this.pnlPantalla.Location = new System.Drawing.Point(367, 135);
+            this.pnlPantalla.Name = "pnlPantalla";
+            this.pnlPantalla.Size = new System.Drawing.Size(228, 157);
+            this.pnlPantalla.TabIndex = 9;
             // 
-            // panel2
+            // pctbPantalla
             // 
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.pictureBox3);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(642, 135);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(228, 157);
-            this.panel2.TabIndex = 10;
+            this.pctbPantalla.Image = ((System.Drawing.Image)(resources.GetObject("pctbPantalla.Image")));
+            this.pctbPantalla.Location = new System.Drawing.Point(42, 5);
+            this.pctbPantalla.Name = "pctbPantalla";
+            this.pctbPantalla.Size = new System.Drawing.Size(24, 24);
+            this.pctbPantalla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pctbPantalla.TabIndex = 12;
+            this.pctbPantalla.TabStop = false;
             // 
-            // panel3
+            // txtPantalla
             // 
-            this.panel3.Controls.Add(this.pictureBox5);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Location = new System.Drawing.Point(367, 340);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(228, 157);
-            this.panel3.TabIndex = 11;
+            this.txtPantalla.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtPantalla.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPantalla.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPantalla.Location = new System.Drawing.Point(69, 6);
+            this.txtPantalla.Multiline = true;
+            this.txtPantalla.Name = "txtPantalla";
+            this.txtPantalla.ReadOnly = true;
+            this.txtPantalla.Size = new System.Drawing.Size(107, 24);
+            this.txtPantalla.TabIndex = 8;
+            this.txtPantalla.Text = "PANTALLA";
+            this.txtPantalla.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel4
+            // pnlCamara
             // 
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Controls.Add(this.textBox3);
-            this.panel4.Location = new System.Drawing.Point(642, 340);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(228, 157);
-            this.panel4.TabIndex = 12;
+            this.pnlCamara.Controls.Add(this.pctbCamara);
+            this.pnlCamara.Controls.Add(this.txtCamara);
+            this.pnlCamara.Location = new System.Drawing.Point(642, 135);
+            this.pnlCamara.Name = "pnlCamara";
+            this.pnlCamara.Size = new System.Drawing.Size(228, 157);
+            this.pnlCamara.TabIndex = 10;
             // 
-            // txtExplicacion
+            // pctbCamara
             // 
-            this.txtExplicacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtExplicacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtExplicacion.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExplicacion.Location = new System.Drawing.Point(62, 3);
-            this.txtExplicacion.Multiline = true;
-            this.txtExplicacion.Name = "txtExplicacion";
-            this.txtExplicacion.ReadOnly = true;
-            this.txtExplicacion.Size = new System.Drawing.Size(107, 24);
-            this.txtExplicacion.TabIndex = 8;
-            this.txtExplicacion.Text = "PANTALLA";
-            this.txtExplicacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pctbCamara.Image = ((System.Drawing.Image)(resources.GetObject("pctbCamara.Image")));
+            this.pctbCamara.Location = new System.Drawing.Point(47, 5);
+            this.pctbCamara.Name = "pctbCamara";
+            this.pctbCamara.Size = new System.Drawing.Size(30, 24);
+            this.pctbCamara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctbCamara.TabIndex = 9;
+            this.pctbCamara.TabStop = false;
             // 
-            // textBox1
+            // txtCamara
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(76, 10);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(107, 24);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "CAMARA";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCamara.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtCamara.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCamara.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCamara.Location = new System.Drawing.Point(73, 5);
+            this.txtCamara.Multiline = true;
+            this.txtCamara.Name = "txtCamara";
+            this.txtCamara.ReadOnly = true;
+            this.txtCamara.Size = new System.Drawing.Size(107, 24);
+            this.txtCamara.TabIndex = 9;
+            this.txtCamara.Text = "CAMARA";
+            this.txtCamara.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // pnlBateria
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(62, 9);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(107, 24);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.Text = "BATERÍA";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pnlBateria.Controls.Add(this.pctbBateria);
+            this.pnlBateria.Controls.Add(this.txtBateria);
+            this.pnlBateria.Location = new System.Drawing.Point(367, 340);
+            this.pnlBateria.Name = "pnlBateria";
+            this.pnlBateria.Size = new System.Drawing.Size(228, 157);
+            this.pnlBateria.TabIndex = 11;
             // 
-            // textBox3
+            // pctbBateria
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(61, 3);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(107, 24);
-            this.textBox3.TabIndex = 9;
-            this.textBox3.Text = "SISTEMA";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pctbBateria.Image = ((System.Drawing.Image)(resources.GetObject("pctbBateria.Image")));
+            this.pctbBateria.Location = new System.Drawing.Point(43, 3);
+            this.pctbBateria.Name = "pctbBateria";
+            this.pctbBateria.Size = new System.Drawing.Size(26, 30);
+            this.pctbBateria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctbBateria.TabIndex = 12;
+            this.pctbBateria.TabStop = false;
             // 
-            // pictureBox4
+            // txtBateria
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(101, 67);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(28, 25);
-            this.pictureBox4.TabIndex = 11;
-            this.pictureBox4.TabStop = false;
+            this.txtBateria.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtBateria.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBateria.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBateria.Location = new System.Drawing.Point(62, 6);
+            this.txtBateria.Multiline = true;
+            this.txtBateria.Name = "txtBateria";
+            this.txtBateria.ReadOnly = true;
+            this.txtBateria.Size = new System.Drawing.Size(107, 24);
+            this.txtBateria.TabIndex = 9;
+            this.txtBateria.Text = "BATERÍA";
+            this.txtBateria.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pictureBox5
+            // pnlSistema
             // 
-            this.pictureBox5.Image = global::BazarDisp.Properties.Resources.bateria;
-            this.pictureBox5.Location = new System.Drawing.Point(28, 3);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(38, 36);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 12;
-            this.pictureBox5.TabStop = false;
+            this.pnlSistema.Controls.Add(this.pctbSistema);
+            this.pnlSistema.Controls.Add(this.txtSistema);
+            this.pnlSistema.Location = new System.Drawing.Point(642, 340);
+            this.pnlSistema.Name = "pnlSistema";
+            this.pnlSistema.Size = new System.Drawing.Size(228, 157);
+            this.pnlSistema.TabIndex = 12;
             // 
-            // pictureBox2
+            // pctbSistema
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(34, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(36, 36);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
+            this.pctbSistema.Image = ((System.Drawing.Image)(resources.GetObject("pctbSistema.Image")));
+            this.pctbSistema.Location = new System.Drawing.Point(53, 3);
+            this.pctbSistema.Name = "pctbSistema";
+            this.pctbSistema.Size = new System.Drawing.Size(24, 24);
+            this.pctbSistema.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pctbSistema.TabIndex = 11;
+            this.pctbSistema.TabStop = false;
             // 
-            // pictureBox3
+            // txtSistema
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(112, 71);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(28, 25);
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
+            this.txtSistema.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtSistema.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSistema.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSistema.Location = new System.Drawing.Point(73, 4);
+            this.txtSistema.Multiline = true;
+            this.txtSistema.Name = "txtSistema";
+            this.txtSistema.ReadOnly = true;
+            this.txtSistema.Size = new System.Drawing.Size(107, 24);
+            this.txtSistema.TabIndex = 9;
+            this.txtSistema.Text = "SISTEMA";
+            this.txtSistema.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pictureBox1
+            // pctbDispositivo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(23, 80);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(304, 417);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pctbDispositivo.Location = new System.Drawing.Point(23, 80);
+            this.pctbDispositivo.Name = "pctbDispositivo";
+            this.pctbDispositivo.Size = new System.Drawing.Size(304, 417);
+            this.pctbDispositivo.TabIndex = 0;
+            this.pctbDispositivo.TabStop = false;
             // 
             // FrmDispositivos
             // 
@@ -217,30 +223,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(921, 525);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblComandos);
+            this.Controls.Add(this.pnlSistema);
+            this.Controls.Add(this.pnlBateria);
+            this.Controls.Add(this.pnlCamara);
+            this.Controls.Add(this.pnlPantalla);
+            this.Controls.Add(this.lblCaracteristicas);
             this.Controls.Add(this.lblCliente);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pctbDispositivo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDispositivos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDispositivos";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlPantalla.ResumeLayout(false);
+            this.pnlPantalla.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbPantalla)).EndInit();
+            this.pnlCamara.ResumeLayout(false);
+            this.pnlCamara.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbCamara)).EndInit();
+            this.pnlBateria.ResumeLayout(false);
+            this.pnlBateria.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbBateria)).EndInit();
+            this.pnlSistema.ResumeLayout(false);
+            this.pnlSistema.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbSistema)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbDispositivo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,20 +254,20 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pctbDispositivo;
         private System.Windows.Forms.Label lblCliente;
-        private System.Windows.Forms.Label lblComandos;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtExplicacion;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblCaracteristicas;
+        private System.Windows.Forms.Panel pnlPantalla;
+        private System.Windows.Forms.Panel pnlCamara;
+        private System.Windows.Forms.Panel pnlBateria;
+        private System.Windows.Forms.Panel pnlSistema;
+        private System.Windows.Forms.TextBox txtPantalla;
+        private System.Windows.Forms.TextBox txtCamara;
+        private System.Windows.Forms.TextBox txtBateria;
+        private System.Windows.Forms.TextBox txtSistema;
+        private System.Windows.Forms.PictureBox pctbCamara;
+        private System.Windows.Forms.PictureBox pctbBateria;
+        private System.Windows.Forms.PictureBox pctbSistema;
+        private System.Windows.Forms.PictureBox pctbPantalla;
     }
 }
