@@ -61,20 +61,6 @@ namespace BazarDisp
 
         public void CreadImagenes()
         {
-            imagenes_Marcas = new DirectoryInfo("image_marcas");
-
-            //foreach (FileInfo item in imagenes_Marcas.GetFiles("*png"))
-            //{
-            //    PictureBox pictureBox = new PictureBox();
-            //    pictureBox.Size = new Size(200, 133);
-            //    pictureBox.Location = new Point(x, y);
-            //    Console.WriteLine(item);
-            //    pictureBox.Image = Image.FromFile(@"image_marcas\" + item);
-            //    Controls.Add(pictureBox);
-            //    pnlImagenes.Controls.Add(pictureBox);
-            //    nuevaI = y * 150;
-            //}
-
             for (int i = 0; i < 20; i++)
             {
                 if (i % numColumnas == 0)
@@ -88,7 +74,7 @@ namespace BazarDisp
                 Console.WriteLine("POSICION X -> " + x + "\n" + "POSICION Y -> " + y + "\n" + i + ".png");
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
                 pictureBox.MouseClick += new MouseEventHandler(ClickBoton);
-                pictureBox.Tag = "Caja - "+ i;
+                pictureBox.Tag = i;
                 Console.WriteLine(pictureBox.Tag = "Caja - " + i);
                 Controls.Add(pictureBox);
                 x += separacionHorizontal;
@@ -98,25 +84,52 @@ namespace BazarDisp
         public void ClickBoton(object sender, MouseEventArgs e)
         {
             PictureBox pctBox = sender as PictureBox;
-
-            if (pctBox.Tag.Equals("Caja - 0"))
+            int imagenSeleccionada = Convert.ToInt32(pctBox.Tag);
+            switch (imagenSeleccionada)
             {
-                MessageBox.Show("ENTRA - " + pctBox.Tag );
+                case 0:
+                    
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                case 16:
+                    break;
+                case 17:
+                    break;
+                case 18:
+                    break;
+                case 19:
+                    break;
+
             }
-
-            if (pctBox.Tag.Equals("Caja - 1"))
-            {
-                MessageBox.Show("ENTRA - " + pctBox.Tag);
-            }
-
-            if (pctBox.Tag.Equals("Caja - 2"))
-            {
-                MessageBox.Show("ENTRA - " + pctBox.Tag);
-            }
-
-
-
-
         }
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)

@@ -49,6 +49,7 @@ namespace BazarDisp
             try
             {
                 ServidorBazar server = new ServidorBazar();
+
                 Conexion();
                 txtbServidor.Text = "";
                 Button btnComando = sender as Button;

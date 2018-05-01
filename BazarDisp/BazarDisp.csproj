@@ -70,6 +70,12 @@
     <Compile Include="FormServidor.Designer.cs">
       <DependentUpon>FormServidor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDispositivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDispositivos.Designer.cs">
+      <DependentUpon>FrmDispositivos.cs</DependentUpon>
+    </Compile>
     <Compile Include="NuevoMovil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormServidor.resx">
       <DependentUpon>FormServidor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDispositivos.resx">
+      <DependentUpon>FrmDispositivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\image_marcas\marca_Philips.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\imagen_dispositivos\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\imagen_dispositivos\bateria.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
