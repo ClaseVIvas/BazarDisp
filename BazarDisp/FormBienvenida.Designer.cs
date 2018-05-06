@@ -54,6 +54,7 @@
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(191, 23);
             this.txtNombreCliente.TabIndex = 1;
+            this.txtNombreCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -93,7 +94,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(231, 367);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(91, 42);
-            this.btnAceptar.TabIndex = 5;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = true;
             // 

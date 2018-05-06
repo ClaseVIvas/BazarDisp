@@ -34,6 +34,9 @@
             this.lblAyuda = new System.Windows.Forms.Label();
             this.pnlServidor = new System.Windows.Forms.Panel();
             this.txtExplicacion = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblCopirigh = new System.Windows.Forms.Label();
+            this.linkLblCopirig = new System.Windows.Forms.LinkLabel();
             this.pnlServidor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,12 +45,12 @@
             this.lblCliente.AutoSize = true;
             this.lblCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblCliente.Font = new System.Drawing.Font("Rockwell", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.Location = new System.Drawing.Point(364, 9);
+            this.lblCliente.Font = new System.Drawing.Font("Rockwell", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.Location = new System.Drawing.Point(977, 129);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(519, 54);
+            this.lblCliente.Size = new System.Drawing.Size(151, 39);
             this.lblCliente.TabIndex = 1;
-            this.lblCliente.Text = "BIENVENIDO CLIENTE";
+            this.lblCliente.Text = "CLIENTE";
             // 
             // btnIniciaServidor
             // 
@@ -77,7 +80,7 @@
             this.pnlServidor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlServidor.Controls.Add(this.btnIniciaServidor);
             this.pnlServidor.Controls.Add(this.lblAyuda);
-            this.pnlServidor.Location = new System.Drawing.Point(886, 356);
+            this.pnlServidor.Location = new System.Drawing.Point(886, 402);
             this.pnlServidor.Name = "pnlServidor";
             this.pnlServidor.Size = new System.Drawing.Size(317, 90);
             this.pnlServidor.TabIndex = 4;
@@ -87,7 +90,7 @@
             this.txtExplicacion.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtExplicacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtExplicacion.Font = new System.Drawing.Font("Rockwell", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExplicacion.Location = new System.Drawing.Point(859, 139);
+            this.txtExplicacion.Location = new System.Drawing.Point(859, 185);
             this.txtExplicacion.Multiline = true;
             this.txtExplicacion.Name = "txtExplicacion";
             this.txtExplicacion.ReadOnly = true;
@@ -96,12 +99,48 @@
             this.txtExplicacion.Text = resources.GetString("txtExplicacion.Text");
             this.txtExplicacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Script MT Bold", 54.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(60, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1141, 88);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Principales Marcas A Su Disposición";
+            // 
+            // lblCopirigh
+            // 
+            this.lblCopirigh.AutoSize = true;
+            this.lblCopirigh.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCopirigh.Location = new System.Drawing.Point(844, 495);
+            this.lblCopirigh.Name = "lblCopirigh";
+            this.lblCopirigh.Size = new System.Drawing.Size(36, 13);
+            this.lblCopirigh.TabIndex = 9;
+            this.lblCopirigh.Text = "Nota: ";
+            this.lblCopirigh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // linkLblCopirig
+            // 
+            this.linkLblCopirig.AutoSize = true;
+            this.linkLblCopirig.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLblCopirig.Location = new System.Drawing.Point(1007, 523);
+            this.linkLblCopirig.Name = "linkLblCopirig";
+            this.linkLblCopirig.Size = new System.Drawing.Size(34, 13);
+            this.linkLblCopirig.TabIndex = 10;
+            this.linkLblCopirig.TabStop = true;
+            this.linkLblCopirig.Text = "AQUI";
+            this.linkLblCopirig.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // FormInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1272, 586);
+            this.ClientSize = new System.Drawing.Size(1252, 560);
+            this.Controls.Add(this.linkLblCopirig);
+            this.Controls.Add(this.lblCopirigh);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtExplicacion);
             this.Controls.Add(this.pnlServidor);
             this.Controls.Add(this.lblCliente);
@@ -125,6 +164,9 @@
         private System.Windows.Forms.Label lblAyuda;
         private System.Windows.Forms.Panel pnlServidor;
         private System.Windows.Forms.TextBox txtExplicacion;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCopirigh;
+        private System.Windows.Forms.LinkLabel linkLblCopirig;
     }
 }
 

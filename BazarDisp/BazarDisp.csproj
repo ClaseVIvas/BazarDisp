@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDatos.cs" />
+    <Compile Include="Dispositivos.cs" />
     <Compile Include="FormBienvenida.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace BazarDisp
 {
@@ -43,7 +44,10 @@ namespace BazarDisp
                             else
                             {
                                 aceptar = true;
-                                lblCliente.Text = "BIENVENIDO " + bazar.txtNombreCliente.Text;
+                                lblCliente.Text = bazar.txtNombreCliente.Text;
+                                lblCliente.TextAlign = ContentAlignment.MiddleCenter;
+                                linkLblCopirig.Links.Add(0, 0, "https://decaracteristicas.com/");
+                                lblCopirigh.Text = "Nota: \r\n Todas las imagenes utilizadas en éste programa han sido descargadas \r\n ";
                                 CreadImagenes();
                             }
                             break;
@@ -61,7 +65,7 @@ namespace BazarDisp
 
         public void CreadImagenes()
         {
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 12; i++)
             {
                 if (i % numColumnas == 0)
                 {
@@ -139,6 +143,11 @@ namespace BazarDisp
                     break;
 
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(e.Link.LinkData.ToString());
         }
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)

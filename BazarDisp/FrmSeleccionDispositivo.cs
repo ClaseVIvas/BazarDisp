@@ -66,30 +66,25 @@ namespace BazarDisp
                     // APPLE
                     try
                     {
-                        string pantalla = "Tamaño \r\n" +
+                        DispositivoSeleccionado(@"imagen_dispositivos\Apple\0.jpg", "IPHONE X", 
+                                            "Tamaño \r\n" +
                                             "5.8 pulgadas \r\n\r\n" +
                                             "Resolución \r\n" +
                                             "1125 x 2436 px \r\n\r\n" +
                                             "Densidad \r\n" +
-                                            "463 ppi (pixeles por pulgada)";
-
-                        string camara = "Primaria \r\n" +
-                                        "12 MP (4032 x 3024 px)\r\n\r\n" +
-                                        "Secundaria\r\n" +
-                                        "7 MP (3088 x 2320 px)";
-
-                        string bateria = "Capacidad \r\n" +
-                                         "2716 mAh\r\n\r\n" +
-                                         "Autonomia de conversación (3G)\r\n" +
-                                         "21 horas";
-                        string sistema = "Soc \r\n" +
-                                         "Apple A11 Bionic APL1W72 \r\n\r\n" +
-                                         "Memoria RAM\r\n" +
-                                         "3 GB";
-
-                        FrmDispositivos dispositivos = new FrmDispositivos(@"imagen_dispositivos\Apple\0.jpg", "IPHONE X", pantalla, camara, bateria, sistema);
-                        dispositivos.Show();
-
+                                            "463 ppi (pixeles por pulgada)", 
+                                            "Primaria \r\n" +
+                                            "12 MP (4032 x 3024 px)\r\n\r\n" +
+                                            "Secundaria\r\n" +
+                                            "7 MP (3088 x 2320 px)", 
+                                            "Capacidad \r\n" +
+                                            "2716 mAh\r\n\r\n" +
+                                            "Autonomia de conversación (3G)\r\n" +
+                                            "21 horas", 
+                                            "Soc \r\n" +
+                                            "Apple A11 Bionic APL1W72 \r\n\r\n" +
+                                            "Memoria RAM\r\n" +
+                                            "3 GB");
 
                     }
                     catch (Exception v)
@@ -107,6 +102,13 @@ namespace BazarDisp
                 case 4:
                     break;
             }
+        }
+
+        public FrmDispositivos DispositivoSeleccionado(string img, string nombreD, string pantalla, string camara, string bateria, string sistema)
+        {
+            FrmDispositivos dispositivos = new FrmDispositivos(img, nombreD, pantalla, camara, bateria, sistema);
+            dispositivos.Show();
+            return dispositivos;
         }
     }
 }
