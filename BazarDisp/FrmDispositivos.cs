@@ -12,9 +12,32 @@ namespace BazarDisp
 {
     public partial class FrmDispositivos : Form
     {
+
         public FrmDispositivos()
         {
             InitializeComponent();
+        }
+
+        public FrmDispositivos(string img,string nombreDisp , string textoPantalla, string textoCamara, string textoBateria, string textoSistema)
+        {
+            InitializeComponent();
+            pctbDispositivo.Image = Image.FromFile(img);
+            lblDispositivo.Text = nombreDisp;
+            lbltextPantalla.Text = textoPantalla;
+            lbltextCamara.Text = textoCamara;
+            lbltextBateria.Text = textoBateria;
+            lbltextSistema.Text = textoSistema;
+        }
+
+
+        private void FrmDispositivos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace BazarDisp
         string rutaMarcas;
         DirectoryInfo imagenes_Marcas;
         int x, y;
-        int oriX = 3;
+        int oriX = 10;
         int numColumnas = 4;
         int separacionHorizontal = 208;
         int separaciónVertical = 139;
@@ -61,7 +61,7 @@ namespace BazarDisp
 
         public void CreadImagenes()
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 19; i++)
             {
                 if (i % numColumnas == 0)
                 {
@@ -71,11 +71,9 @@ namespace BazarDisp
                 PictureBox pictureBox = new PictureBox();
                 pictureBox.Size = tamañoImagenes;
                 pictureBox.Location = new Point(x, y);
-                Console.WriteLine("POSICION X -> " + x + "\n" + "POSICION Y -> " + y + "\n" + i + ".png");
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
                 pictureBox.MouseClick += new MouseEventHandler(ClickBoton);
                 pictureBox.Tag = i;
-                Console.WriteLine(pictureBox.Tag = "Caja - " + i);
                 Controls.Add(pictureBox);
                 x += separacionHorizontal;
             }
@@ -88,9 +86,20 @@ namespace BazarDisp
             switch (imagenSeleccionada)
             {
                 case 0:
-                    
+                    // APPLE
+                    try
+                    {
+                        FrmSeleccionDispositivo frmSeleccionDispositivo = new FrmSeleccionDispositivo();
+                        frmSeleccionDispositivo.lblSeleccionDisp.Text = "APPLE";
+                        frmSeleccionDispositivo.Show();
+                    }
+                    catch (IOException v)
+                    {
+                        MessageBox.Show("ERROR: "+ v.Message,"BAZAR DISP",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
                     break;
                 case 1:
+
                     break;
                 case 2:
                     break;
