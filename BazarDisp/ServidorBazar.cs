@@ -111,6 +111,10 @@ namespace BazarDisp
                 puerto++;
                 ie = new IPEndPoint(IPAddress.Any, puerto);
             }
+            catch(ObjectDisposedException v)
+            {
+
+            }
             // Cerramos la conexion del Servidor
             Console.WriteLine("Terminando Conexion....");
             s.Close();

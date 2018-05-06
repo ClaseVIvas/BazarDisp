@@ -27,10 +27,9 @@ namespace BazarDisp
         private void FrmSeleccionDispositivo_Load(object sender, EventArgs e)
         {
             lbltextInfo.Text = "Estos Son Los Dispositivo Disponibles. \r\n Selecciona Alguno para ver sus Caracteristicas Basicas";
-            CreadImagenesDispositivos();
         }
 
-        public void CreadImagenesDispositivos()
+        public void CreadImagenesDispositivos(string marca)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -43,7 +42,7 @@ namespace BazarDisp
                 pictureBox.Size = tamañoImagenes;
                 pictureBox.Location = new Point(x, y);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox.Image = Image.FromFile(@"imagen_dispositivos\Apple\" + i + ".jpg");
+                pictureBox.Image = Image.FromFile(@"imagen_dispositivos\" + marca + "\\"+i+".jpg");
                 pictureBox.MouseClick += new MouseEventHandler(ClickBoton);
                 pictureBox.Tag = i;
                 Controls.Add(pictureBox);
@@ -66,25 +65,26 @@ namespace BazarDisp
                     // APPLE
                     try
                     {
-                        DispositivoSeleccionado(@"imagen_dispositivos\Apple\0.jpg", "IPHONE X", 
-                                            "Tamaño \r\n" +
+                        Dispositivos dispositivos = new Dispositivos();
+                        dispositivos.Apple(@"imagen_dispositivos\apple\0.jpg", "iphone x",
+                                            "tamaño \r\n" +
                                             "5.8 pulgadas \r\n\r\n" +
-                                            "Resolución \r\n" +
+                                            "resolución \r\n" +
                                             "1125 x 2436 px \r\n\r\n" +
-                                            "Densidad \r\n" +
-                                            "463 ppi (pixeles por pulgada)", 
-                                            "Primaria \r\n" +
-                                            "12 MP (4032 x 3024 px)\r\n\r\n" +
-                                            "Secundaria\r\n" +
-                                            "7 MP (3088 x 2320 px)", 
-                                            "Capacidad \r\n" +
-                                            "2716 mAh\r\n\r\n" +
-                                            "Autonomia de conversación (3G)\r\n" +
-                                            "21 horas", 
-                                            "Soc \r\n" +
-                                            "Apple A11 Bionic APL1W72 \r\n\r\n" +
-                                            "Memoria RAM\r\n" +
-                                            "3 GB");
+                                            "densidad \r\n" +
+                                            "463 ppi (pixeles por pulgada)",
+                                            "primaria \r\n" +
+                                            "12 mp (4032 x 3024 px)\r\n\r\n" +
+                                            "secundaria\r\n" +
+                                            "7 mp (3088 x 2320 px)",
+                                            "capacidad \r\n" +
+                                            "2716 mah\r\n\r\n" +
+                                            "autonomia de conversación (3g)\r\n" +
+                                            "21 horas",
+                                            "soc \r\n" +
+                                            "apple a11 bionic apl1w72 \r\n\r\n" +
+                                            "memoria ram\r\n" +
+                                            "3 gb");
 
                     }
                     catch (Exception v)

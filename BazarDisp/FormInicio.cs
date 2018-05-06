@@ -76,16 +76,17 @@ namespace BazarDisp
                 pictureBox.Size = tamañoImagenes;
                 pictureBox.Location = new Point(x, y);
                 pictureBox.Image = Image.FromFile(@"image_marcas\" + i + ".png");
-                pictureBox.MouseClick += new MouseEventHandler(ClickBoton);
+                pictureBox.MouseClick += new MouseEventHandler(ClickBotonMarca);
                 pictureBox.Tag = i;
                 Controls.Add(pictureBox);
                 x += separacionHorizontal;
             }
         }
 
-        public void ClickBoton(object sender, MouseEventArgs e)
+        public void ClickBotonMarca(object sender, MouseEventArgs e)
         {
             PictureBox pctBox = sender as PictureBox;
+            FrmSeleccionDispositivo frmSeleccionDispositivo = new FrmSeleccionDispositivo();
             int imagenSeleccionada = Convert.ToInt32(pctBox.Tag);
             switch (imagenSeleccionada)
             {
@@ -93,8 +94,8 @@ namespace BazarDisp
                     // APPLE
                     try
                     {
-                        FrmSeleccionDispositivo frmSeleccionDispositivo = new FrmSeleccionDispositivo();
                         frmSeleccionDispositivo.lblSeleccionDisp.Text = "APPLE";
+                        frmSeleccionDispositivo.CreadImagenesDispositivos("Apple");
                         frmSeleccionDispositivo.Show();
                     }
                     catch (IOException v)
@@ -103,45 +104,81 @@ namespace BazarDisp
                     }
                     break;
                 case 1:
-
+                    // XIAOMI
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Xiaomi";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Xiaomi");
+                    frmSeleccionDispositivo.Show();
                     break;
                 case 2:
+                    //GOOGLE
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Google";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Google");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 3:
+                    // HUAWEI
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Huawei";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Huawei");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 4:
+                    // HTC
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "HTC";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("HTC");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 5:
+                    // SAMSUNG
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Samsung";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Samsung");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 6:
+                    // SONY
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "SONY";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Sony");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 7:
+                    // LG
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "LG";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("LG");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 8:
+                    // ELEPHONE
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Elephone";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Elephone");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 9:
+                    //MICROSOFT
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Microsoft";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Microsoft");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 10:
+                    // BLACKBERRY
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "BlackBerry";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("BlackBerry");
+                    frmSeleccionDispositivo.Show();
+
                     break;
                 case 11:
-                    break;
-                case 12:
-                    break;
-                case 13:
-                    break;
-                case 14:
-                    break;
-                case 15:
-                    break;
-                case 16:
-                    break;
-                case 17:
-                    break;
-                case 18:
-                    break;
-                case 19:
-                    break;
+                    //MOTOROLA
+                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Motorola";
+                    frmSeleccionDispositivo.CreadImagenesDispositivos("Motorola");
+                    frmSeleccionDispositivo.Show();
 
+                    break;
             }
         }
 

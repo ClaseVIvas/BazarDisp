@@ -70,11 +70,6 @@ namespace BazarDisp
 
                 servidor.Close(); // CERRAMOS EL SERVIDOR
 
-                if (btnComando.Text == "Salir")
-                {
-                    servidor.Close();
-                    Close();
-                }
             }
             catch (IOException a)
             {
@@ -92,6 +87,11 @@ namespace BazarDisp
         {
             BaseDatos bd = new BaseDatos();
             MessageBox.Show("BASE DE DATOS ACTIVA");
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
