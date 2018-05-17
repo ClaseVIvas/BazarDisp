@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPedido));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cmBTamaño = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cmBMarca = new System.Windows.Forms.ComboBox();
+            this.cmBColor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -56,35 +56,19 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "NOMBRE";
             // 
-            // textBox2
+            // cmBTamaño
             // 
-            this.textBox2.Location = new System.Drawing.Point(431, 135);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "COLOR";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmBTamaño.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmBTamaño.FormattingEnabled = true;
+            this.cmBTamaño.Items.AddRange(new object[] {
             "Normal",
             "Grande",
             "Pequeño"});
-            this.comboBox1.Location = new System.Drawing.Point(608, 135);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.Text = "Tamaño";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(269, 135);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "MODELO";
+            this.cmBTamaño.Location = new System.Drawing.Point(608, 135);
+            this.cmBTamaño.Name = "cmBTamaño";
+            this.cmBTamaño.Size = new System.Drawing.Size(121, 21);
+            this.cmBTamaño.TabIndex = 3;
+            this.cmBTamaño.Text = "Tamaño";
             // 
             // btnAceptar
             // 
@@ -95,6 +79,7 @@
             this.btnAceptar.TabIndex = 5;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -106,6 +91,43 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // cmBMarca
+            // 
+            this.cmBMarca.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmBMarca.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmBMarca.FormattingEnabled = true;
+            this.cmBMarca.Items.AddRange(new object[] {
+            "Apple",
+            "BlackBerry",
+            "Elephone",
+            "Google",
+            "HTC",
+            "Huawei",
+            "LG",
+            "Microsoft",
+            "Motorola",
+            "Samsung",
+            "Sony",
+            "Xiaomi"});
+            this.cmBMarca.Location = new System.Drawing.Point(258, 135);
+            this.cmBMarca.Name = "cmBMarca";
+            this.cmBMarca.Size = new System.Drawing.Size(121, 21);
+            this.cmBMarca.TabIndex = 7;
+            // 
+            // cmBColor
+            // 
+            this.cmBColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmBColor.FormattingEnabled = true;
+            this.cmBColor.Items.AddRange(new object[] {
+            "Negro",
+            "Blanco",
+            "Gris"});
+            this.cmBColor.Location = new System.Drawing.Point(436, 134);
+            this.cmBColor.Name = "cmBColor";
+            this.cmBColor.Size = new System.Drawing.Size(121, 21);
+            this.cmBColor.TabIndex = 8;
+            this.cmBColor.Text = "COLOR";
+            // 
             // FormPedido
             // 
             this.AcceptButton = this.btnAceptar;
@@ -114,11 +136,11 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(905, 315);
+            this.Controls.Add(this.cmBColor);
+            this.Controls.Add(this.cmBMarca);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.cmBTamaño);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -137,8 +159,8 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.ComboBox comboBox1;
-        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.ComboBox cmBTamaño;
+        public System.Windows.Forms.ComboBox cmBMarca;
+        public System.Windows.Forms.ComboBox cmBColor;
     }
 }
