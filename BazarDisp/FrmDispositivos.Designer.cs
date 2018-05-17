@@ -182,7 +182,7 @@
             this.btnSalir.TabIndex = 13;
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.button1_Click);
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // lblPantalla
             // 
@@ -286,7 +286,6 @@
             this.Name = "FrmDispositivos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDispositivos";
-            this.Load += new System.EventHandler(this.FrmDispositivos_Load);
             this.pnlPantalla.ResumeLayout(false);
             this.pnlPantalla.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctbPantalla)).EndInit();

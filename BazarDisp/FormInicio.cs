@@ -105,9 +105,16 @@ namespace BazarDisp
                     break;
                 case 1:
                     // XIAOMI
-                    frmSeleccionDispositivo.lblSeleccionDisp.Text = "Xiaomi";
-                    frmSeleccionDispositivo.CreadImagenesDispositivos("Xiaomi");
-                    frmSeleccionDispositivo.Show();
+                    try
+                    {
+                        frmSeleccionDispositivo.lblSeleccionDisp.Text = "Xiaomi";
+                        frmSeleccionDispositivo.CreadImagenesDispositivos("Xiaomi");
+                        frmSeleccionDispositivo.Show();
+                    }
+                    catch (IOException v)
+                    {
+                        MessageBox.Show("ERROR: " + v.Message, "BAZAR DISP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     break;
                 case 2:
                     //GOOGLE
