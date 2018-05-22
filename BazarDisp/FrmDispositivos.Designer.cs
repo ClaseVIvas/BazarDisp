@@ -32,23 +32,23 @@
             this.lblDispositivo = new System.Windows.Forms.Label();
             this.lblCaracteristicas = new System.Windows.Forms.Label();
             this.pnlPantalla = new System.Windows.Forms.Panel();
+            this.lbltextPantalla = new System.Windows.Forms.Label();
+            this.lblPantalla = new System.Windows.Forms.Label();
             this.pctbPantalla = new System.Windows.Forms.PictureBox();
             this.pnlCamara = new System.Windows.Forms.Panel();
+            this.lbltextCamara = new System.Windows.Forms.Label();
+            this.lblCamara = new System.Windows.Forms.Label();
             this.pctbCamara = new System.Windows.Forms.PictureBox();
             this.pnlBateria = new System.Windows.Forms.Panel();
+            this.lbltextBateria = new System.Windows.Forms.Label();
+            this.lblBateria = new System.Windows.Forms.Label();
             this.pctbBateria = new System.Windows.Forms.PictureBox();
             this.pnlSistema = new System.Windows.Forms.Panel();
+            this.lbltextSistema = new System.Windows.Forms.Label();
+            this.lblSistema = new System.Windows.Forms.Label();
             this.pctbSistema = new System.Windows.Forms.PictureBox();
             this.pctbDispositivo = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.lblPantalla = new System.Windows.Forms.Label();
-            this.lblCamara = new System.Windows.Forms.Label();
-            this.lblBateria = new System.Windows.Forms.Label();
-            this.lblSistema = new System.Windows.Forms.Label();
-            this.lbltextPantalla = new System.Windows.Forms.Label();
-            this.lbltextCamara = new System.Windows.Forms.Label();
-            this.lbltextBateria = new System.Windows.Forms.Label();
-            this.lbltextSistema = new System.Windows.Forms.Label();
             this.pnlPantalla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctbPantalla)).BeginInit();
             this.pnlCamara.SuspendLayout();
@@ -76,7 +76,7 @@
             // 
             this.lblCaracteristicas.AutoSize = true;
             this.lblCaracteristicas.Font = new System.Drawing.Font("Script MT Bold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCaracteristicas.Location = new System.Drawing.Point(495, 80);
+            this.lblCaracteristicas.Location = new System.Drawing.Point(511, 83);
             this.lblCaracteristicas.Name = "lblCaracteristicas";
             this.lblCaracteristicas.Size = new System.Drawing.Size(219, 24);
             this.lblCaracteristicas.TabIndex = 8;
@@ -91,6 +91,27 @@
             this.pnlPantalla.Name = "pnlPantalla";
             this.pnlPantalla.Size = new System.Drawing.Size(228, 176);
             this.pnlPantalla.TabIndex = 9;
+            // 
+            // lbltextPantalla
+            // 
+            this.lbltextPantalla.AutoSize = true;
+            this.lbltextPantalla.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.lbltextPantalla.Location = new System.Drawing.Point(20, 38);
+            this.lbltextPantalla.Name = "lbltextPantalla";
+            this.lbltextPantalla.Size = new System.Drawing.Size(0, 17);
+            this.lbltextPantalla.TabIndex = 15;
+            this.lbltextPantalla.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPantalla
+            // 
+            this.lblPantalla.AutoSize = true;
+            this.lblPantalla.Font = new System.Drawing.Font("Rockwell", 15F);
+            this.lblPantalla.Location = new System.Drawing.Point(72, 7);
+            this.lblPantalla.Name = "lblPantalla";
+            this.lblPantalla.Size = new System.Drawing.Size(108, 22);
+            this.lblPantalla.TabIndex = 14;
+            this.lblPantalla.Text = "PANTALLA";
+            this.lblPantalla.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pctbPantalla
             // 
@@ -112,6 +133,27 @@
             this.pnlCamara.Size = new System.Drawing.Size(228, 176);
             this.pnlCamara.TabIndex = 10;
             // 
+            // lbltextCamara
+            // 
+            this.lbltextCamara.AutoSize = true;
+            this.lbltextCamara.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.lbltextCamara.Location = new System.Drawing.Point(36, 38);
+            this.lbltextCamara.Name = "lbltextCamara";
+            this.lbltextCamara.Size = new System.Drawing.Size(0, 17);
+            this.lbltextCamara.TabIndex = 16;
+            this.lbltextCamara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCamara
+            // 
+            this.lblCamara.AutoSize = true;
+            this.lblCamara.Font = new System.Drawing.Font("Rockwell", 15F);
+            this.lblCamara.Location = new System.Drawing.Point(83, 7);
+            this.lblCamara.Name = "lblCamara";
+            this.lblCamara.Size = new System.Drawing.Size(97, 22);
+            this.lblCamara.TabIndex = 15;
+            this.lblCamara.Text = "CAMARA";
+            this.lblCamara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pctbCamara
             // 
             this.pctbCamara.Image = ((System.Drawing.Image)(resources.GetObject("pctbCamara.Image")));
@@ -132,6 +174,27 @@
             this.pnlBateria.Size = new System.Drawing.Size(228, 182);
             this.pnlBateria.TabIndex = 11;
             // 
+            // lbltextBateria
+            // 
+            this.lbltextBateria.AutoSize = true;
+            this.lbltextBateria.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.lbltextBateria.Location = new System.Drawing.Point(7, 40);
+            this.lbltextBateria.Name = "lbltextBateria";
+            this.lbltextBateria.Size = new System.Drawing.Size(0, 17);
+            this.lbltextBateria.TabIndex = 17;
+            this.lbltextBateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblBateria
+            // 
+            this.lblBateria.AutoSize = true;
+            this.lblBateria.Font = new System.Drawing.Font("Rockwell", 15F);
+            this.lblBateria.Location = new System.Drawing.Point(73, 7);
+            this.lblBateria.Name = "lblBateria";
+            this.lblBateria.Size = new System.Drawing.Size(92, 22);
+            this.lblBateria.TabIndex = 15;
+            this.lblBateria.Text = "BATERÍA";
+            this.lblBateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pctbBateria
             // 
             this.pctbBateria.Image = ((System.Drawing.Image)(resources.GetObject("pctbBateria.Image")));
@@ -151,6 +214,27 @@
             this.pnlSistema.Name = "pnlSistema";
             this.pnlSistema.Size = new System.Drawing.Size(228, 182);
             this.pnlSistema.TabIndex = 12;
+            // 
+            // lbltextSistema
+            // 
+            this.lbltextSistema.AutoSize = true;
+            this.lbltextSistema.Font = new System.Drawing.Font("Rockwell", 10F);
+            this.lbltextSistema.Location = new System.Drawing.Point(22, 40);
+            this.lbltextSistema.Name = "lbltextSistema";
+            this.lbltextSistema.Size = new System.Drawing.Size(0, 17);
+            this.lbltextSistema.TabIndex = 17;
+            this.lbltextSistema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSistema
+            // 
+            this.lblSistema.AutoSize = true;
+            this.lblSistema.Font = new System.Drawing.Font("Rockwell", 15F);
+            this.lblSistema.Location = new System.Drawing.Point(83, 5);
+            this.lblSistema.Name = "lblSistema";
+            this.lblSistema.Size = new System.Drawing.Size(94, 22);
+            this.lblSistema.TabIndex = 15;
+            this.lblSistema.Text = "SISTEMA";
+            this.lblSistema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pctbSistema
             // 
@@ -183,90 +267,6 @@
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // lblPantalla
-            // 
-            this.lblPantalla.AutoSize = true;
-            this.lblPantalla.Font = new System.Drawing.Font("Rockwell", 15F);
-            this.lblPantalla.Location = new System.Drawing.Point(72, 7);
-            this.lblPantalla.Name = "lblPantalla";
-            this.lblPantalla.Size = new System.Drawing.Size(108, 22);
-            this.lblPantalla.TabIndex = 14;
-            this.lblPantalla.Text = "PANTALLA";
-            this.lblPantalla.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCamara
-            // 
-            this.lblCamara.AutoSize = true;
-            this.lblCamara.Font = new System.Drawing.Font("Rockwell", 15F);
-            this.lblCamara.Location = new System.Drawing.Point(83, 7);
-            this.lblCamara.Name = "lblCamara";
-            this.lblCamara.Size = new System.Drawing.Size(97, 22);
-            this.lblCamara.TabIndex = 15;
-            this.lblCamara.Text = "CAMARA";
-            this.lblCamara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblBateria
-            // 
-            this.lblBateria.AutoSize = true;
-            this.lblBateria.Font = new System.Drawing.Font("Rockwell", 15F);
-            this.lblBateria.Location = new System.Drawing.Point(73, 7);
-            this.lblBateria.Name = "lblBateria";
-            this.lblBateria.Size = new System.Drawing.Size(92, 22);
-            this.lblBateria.TabIndex = 15;
-            this.lblBateria.Text = "BATERÍA";
-            this.lblBateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblSistema
-            // 
-            this.lblSistema.AutoSize = true;
-            this.lblSistema.Font = new System.Drawing.Font("Rockwell", 15F);
-            this.lblSistema.Location = new System.Drawing.Point(83, 5);
-            this.lblSistema.Name = "lblSistema";
-            this.lblSistema.Size = new System.Drawing.Size(94, 22);
-            this.lblSistema.TabIndex = 15;
-            this.lblSistema.Text = "SISTEMA";
-            this.lblSistema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbltextPantalla
-            // 
-            this.lbltextPantalla.AutoSize = true;
-            this.lbltextPantalla.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.lbltextPantalla.Location = new System.Drawing.Point(20, 38);
-            this.lbltextPantalla.Name = "lbltextPantalla";
-            this.lbltextPantalla.Size = new System.Drawing.Size(0, 17);
-            this.lbltextPantalla.TabIndex = 15;
-            this.lbltextPantalla.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbltextCamara
-            // 
-            this.lbltextCamara.AutoSize = true;
-            this.lbltextCamara.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.lbltextCamara.Location = new System.Drawing.Point(36, 38);
-            this.lbltextCamara.Name = "lbltextCamara";
-            this.lbltextCamara.Size = new System.Drawing.Size(0, 17);
-            this.lbltextCamara.TabIndex = 16;
-            this.lbltextCamara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbltextBateria
-            // 
-            this.lbltextBateria.AutoSize = true;
-            this.lbltextBateria.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.lbltextBateria.Location = new System.Drawing.Point(7, 40);
-            this.lbltextBateria.Name = "lbltextBateria";
-            this.lbltextBateria.Size = new System.Drawing.Size(0, 17);
-            this.lbltextBateria.TabIndex = 17;
-            this.lbltextBateria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbltextSistema
-            // 
-            this.lbltextSistema.AutoSize = true;
-            this.lbltextSistema.Font = new System.Drawing.Font("Rockwell", 10F);
-            this.lbltextSistema.Location = new System.Drawing.Point(22, 40);
-            this.lbltextSistema.Name = "lbltextSistema";
-            this.lbltextSistema.Size = new System.Drawing.Size(0, 17);
-            this.lbltextSistema.TabIndex = 17;
-            this.lbltextSistema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmDispositivos
             // 

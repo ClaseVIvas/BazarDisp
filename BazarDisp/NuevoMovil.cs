@@ -8,18 +8,23 @@ namespace BazarDisp
 {
     class NuevoMovil
     {
-        string Nombre { set; get; }
-        string Marca { set; get; }
-        string Color { set; get; }
-        int Tamaño { set; get; }
+        public string Nombre { set; get; }
+        public string Marca { set; get; }
+        public string Color { set; get; }
+        public string Tamaño { set; get; }
 
 
-        public NuevoMovil(string nom, string marc, string color, int tam)
+        public NuevoMovil()
         {
-            nom = Nombre;
-            marc = Marca;
-            color = Color;
-            tam = Tamaño;
+
+        }
+
+        public NuevoMovil(string nom, string marc, string color, string tam)
+        {
+            Nombre = nom;
+            Marca = marc;
+            Color = color;
+            Tamaño = tam;
         }
     }
 }

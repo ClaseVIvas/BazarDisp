@@ -20,6 +20,11 @@ namespace BazarDisp
         int puertoCliente = 31416;
         string mensajeServidor;
         Socket servidor = null;
+        public string nombre;
+        public string marca;
+        public string color;
+        public string tamaño;
+        ServidorBazar servidorBazar = new ServidorBazar();
         //
 
         //CODE
@@ -31,7 +36,7 @@ namespace BazarDisp
         public void Conexion()
         {
             try
-            { 
+            {
                 servidor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ie = new IPEndPoint(IPAddress.Parse(IPCliente), puertoCliente);
                 servidor.Connect(ie);
@@ -48,8 +53,6 @@ namespace BazarDisp
         {
             try
             {
-                ServidorBazar server = new ServidorBazar();
-
                 Conexion();
                 txtbServidor.Text = "";
                 Button btnComando = sender as Button;
@@ -70,6 +73,12 @@ namespace BazarDisp
 
                 servidor.Close(); // CERRAMOS EL SERVIDOR
 
+                if (btnComando.Text == "Salir")
+                {
+                    servidor.Close();
+                    MessageBox.Show("Se Ha Cerrado La Fabrica", "BazarDisp", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
             catch (IOException a)
             {
@@ -80,18 +89,54 @@ namespace BazarDisp
         private void btnPedido_Click(object sender, EventArgs e)
         {
             FormPedido pedido = new FormPedido();
-            pedido.Show();
+            DialogResult res = pedido.ShowDialog();
+            switch (res)
+            {
+                case DialogResult.OK:
+                    btnListar.Enabled = true;
+                    try
+                    {
+                        nombre = pedido.txtNombre.Text;
+                        marca = pedido.cmBMarca.SelectedItem.ToString();
+                        color = pedido.cmBColor.SelectedItem.ToString();
+                        tamaño = pedido.cmBTamaño.SelectedItem.ToString();
+                        MessageBox.Show("DATOS RECOGIDOS: " + nombre + "\n" + marca + "\n" + color + "\n" + tamaño, "BAZARDISP", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        servidorBazar.DatosRecibidos(nombre, marca, color, tamaño);
+                    }
+                    catch (NullReferenceException)
+                    {
+
+                    }
+
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FormServidor_Load(object sender, EventArgs e)
         {
-            BaseDatos bd = new BaseDatos();
-            MessageBox.Show("BASE DE DATOS ACTIVA");
+            btnListar.Enabled = false;
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+
+        private void FormServidor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Close();
+
+            DialogResult resp = MessageBox.Show("¿ Desea Salir De La Fabrica ?", "BazarDisp", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (resp)
+            {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
         }
+
+
     }
 }

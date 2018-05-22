@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPedido));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.cmBTamaño = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -48,27 +48,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "REALICE SU PEDIDO AÑADIENDO LA SIGUIENTE INFORMACIÓN";
             // 
-            // textBox1
+            // txtNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 135);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "NOMBRE";
+            this.txtNombre.Location = new System.Drawing.Point(95, 135);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 1;
+            this.txtNombre.Text = "NOMBRE";
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // cmBTamaño
             // 
-            this.cmBTamaño.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmBTamaño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmBTamaño.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmBTamaño.FormattingEnabled = true;
             this.cmBTamaño.Items.AddRange(new object[] {
+            "Pequeño",
             "Normal",
-            "Grande",
-            "Pequeño"});
+            "Grande"});
             this.cmBTamaño.Location = new System.Drawing.Point(608, 135);
             this.cmBTamaño.Name = "cmBTamaño";
             this.cmBTamaño.Size = new System.Drawing.Size(121, 21);
-            this.cmBTamaño.TabIndex = 3;
-            this.cmBTamaño.Text = "Tamaño";
+            this.cmBTamaño.TabIndex = 4;
             // 
             // btnAceptar
             // 
@@ -90,11 +91,12 @@
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // cmBMarca
             // 
-            this.cmBMarca.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmBMarca.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmBMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmBMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmBMarca.FormattingEnabled = true;
             this.cmBMarca.Items.AddRange(new object[] {
             "Apple",
@@ -112,11 +114,12 @@
             this.cmBMarca.Location = new System.Drawing.Point(258, 135);
             this.cmBMarca.Name = "cmBMarca";
             this.cmBMarca.Size = new System.Drawing.Size(121, 21);
-            this.cmBMarca.TabIndex = 7;
+            this.cmBMarca.TabIndex = 2;
             // 
             // cmBColor
             // 
-            this.cmBColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmBColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmBColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmBColor.FormattingEnabled = true;
             this.cmBColor.Items.AddRange(new object[] {
             "Negro",
@@ -125,8 +128,7 @@
             this.cmBColor.Location = new System.Drawing.Point(436, 134);
             this.cmBColor.Name = "cmBColor";
             this.cmBColor.Size = new System.Drawing.Size(121, 21);
-            this.cmBColor.TabIndex = 8;
-            this.cmBColor.Text = "COLOR";
+            this.cmBColor.TabIndex = 3;
             // 
             // FormPedido
             // 
@@ -141,13 +143,15 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cmBTamaño);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FormPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PEDIDO PARA BAZAR DISP";
+            this.Load += new System.EventHandler(this.FormPedido_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,7 +162,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtNombre;
         public System.Windows.Forms.ComboBox cmBTamaño;
         public System.Windows.Forms.ComboBox cmBMarca;
         public System.Windows.Forms.ComboBox cmBColor;

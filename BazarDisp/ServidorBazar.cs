@@ -14,12 +14,12 @@ namespace BazarDisp
         static int puerto = 31416;
         static bool ejecucion = true;
         static Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        static string[] dips = { "One Plus", "Motorola", "Iphone X", "Xiaomi MI MIX 2", "Samsung S9" };
+        NuevoMovil nuevo;
         static List<string> dispositivos = new List<string>();
-        private static NetworkStream ns;
-        private static StreamReader sr;
-        private static StreamWriter sw;
-        private static IPEndPoint ie;
+        static string Nombre;
+        static string Marca;
+        static string Color;
+        static string Tamaño;
 
         public ServidorBazar()
         {
@@ -29,80 +29,22 @@ namespace BazarDisp
 
         public void Inicio()
         {
+            IPEndPoint ie = new IPEndPoint(IPAddress.Any, puerto);
             try
             {
-                ie = new IPEndPoint(IPAddress.Any, puerto);
                 s.Bind(ie);
-                s.Listen(5);
+                s.Listen(3);
                 Console.WriteLine("\t\t\t\t -- SERVIDOR BAZARDISP -- Puerto -> " + ie.Port);
                 //
-                Socket cliente = s.Accept();
-
-                Socket socketCliente = cliente;
-                IPEndPoint ieCliente = (IPEndPoint)(socketCliente).RemoteEndPoint;
-                string mensajeCliente = "";
-                ns = new NetworkStream(socketCliente);
-                sr = new StreamReader(ns);
-                sw = new StreamWriter(ns);
-                sw.AutoFlush = true;
-                //
-                Console.WriteLine("\t -- Cliente Conectado {0} en el Puerto {1}", ieCliente.Address, ieCliente.Port);
-                foreach (string item in dips)
+                while (ejecucion)
                 {
-                    dispositivos.Add(item);
-                }
-                sw.WriteLine("BIENVENIDO AL ALMACEN\r\n" + "Estos Son Los Actuales Dispositivos que estan En Stock\r\n");
-
-                mensajeCliente = sr.ReadLine();
-                try
-                {
-                    Console.WriteLine(ieCliente.Address + ": " + mensajeCliente);
-                    if (mensajeCliente != null)
+                    if (ejecucion)
                     {
-                        switch (mensajeCliente)
-                        {
-                            case "Dispositivos":
-                                int cont = 1;
-                                //
-                                foreach (String item in dispositivos)
-                                {
-                                    sw.WriteLine(cont + " -> " + item + "\r\n");
-                                    cont++;
-                                    Console.WriteLine(item);
-                                }
-                                //BaseDatos bd = new BaseDatos();
-                                //sw.WriteLine("LISTA");
-                                //foreach (string item in dispositivos)
-                                //{
-                                //    sw.WriteLine(item);
-                                //}
-                                break;
-                            case "Salir":
-                                sw.WriteLine("HASTA LA PROXIMA " + ieCliente.Address + " --");
-                                ejecucion = false;
-                                break;
-                            default:
-                                sw.WriteLine("Comando No Reconocido");
-                                break;
-                        }
+                        Socket cliente = s.Accept();
+                        Thread hilo = new Thread(HiloCliente);
+                        hilo.Start(cliente);
                     }
                 }
-                catch (IOException a)
-                {
-                    Console.WriteLine("SE HA DESCONECTADO EL CLIENTE: -> " + a.Message);
-
-                }
-                catch (ObjectDisposedException)
-                {
-                    Console.WriteLine(ieCliente.Address + " SE HA DESCONECTADO");
-
-                }
-                // FINALIZAMOS CONEXION
-                Console.WriteLine("\t Conexion Finalizada con {0}:{1}", ieCliente.Address, ieCliente.Port);
-                sr.Close();
-                sw.Close();
-                ns.Close();
-                socketCliente.Close();
             }
             catch (SocketException v) when (v.ErrorCode == (int)SocketError.ConnectionRefused)
             {
@@ -111,14 +53,84 @@ namespace BazarDisp
                 puerto++;
                 ie = new IPEndPoint(IPAddress.Any, puerto);
             }
-            catch(ObjectDisposedException v)
+            catch (SocketException m)
             {
-
+                Console.WriteLine("ERROR: " + m.Message);
+            }
+            catch (ObjectDisposedException k)
+            {
+                Console.WriteLine("ERROR: " + k.Message);
             }
             // Cerramos la conexion del Servidor
             Console.WriteLine("Terminando Conexion....");
             s.Close();
         }
 
+        public void DatosRecibidos(string nombre, string marca, string color, string tamaño)
+        {
+            Nombre = nombre;
+            Marca = marca;
+            Color = color;
+            Tamaño = tamaño;
+        }
+
+        public void HiloCliente(object socketCliente)
+        {
+            string mensajeCliente = "";
+            Socket cliente = (Socket)socketCliente; // Utilizacion de Variable
+            IPEndPoint ieCliente = (IPEndPoint)cliente.RemoteEndPoint; // Variable para referirse a la conexio
+            //
+            Console.WriteLine("\t -- Cliente Conectado {0} en el Puerto {1}", ieCliente.Address, ieCliente.Port);
+            NetworkStream ns = new NetworkStream(cliente);
+            StreamReader sr = new StreamReader(ns);
+            StreamWriter sw = new StreamWriter(ns);
+            sw.AutoFlush = true;
+
+            dispositivos.Add("Nombre: "+Nombre + "\r\nMarca: "+Marca+ "\r\nColor: " + Color+ "\r\nTamaño: " + Tamaño);
+            sw.WriteLine("BIENVENIDO AL ALMACEN\r\n" + "Estos Son Los Actuales Dispositivos que estan En Fabricacion \r\n");
+
+            try
+            {
+                mensajeCliente = sr.ReadLine();
+                Console.WriteLine(ieCliente.Address + ": " + mensajeCliente);
+                if (mensajeCliente != null)
+                {
+                    switch (mensajeCliente)
+                    {
+                        case "Dispositivos":
+                            foreach (string item in dispositivos)
+                            {
+                                sw.WriteLine("DISPOSITIVO\r\n"+item + "\r\n");
+                                Console.WriteLine(item);
+                            }
+
+                            break;
+                        case "Salir":
+                            sw.WriteLine("¡ HASTA LA PROXIMA !");
+                            ejecucion = false;
+                            break;
+                        default:
+                            sw.WriteLine("Comando No Reconocido");
+                            break;
+                    }
+                }
+            }
+            catch (IOException a)
+            {
+                Console.WriteLine("SE HA DESCONECTADO EL CLIENTE: -> " + a.Message);
+
+            }
+            catch (ObjectDisposedException)
+            {
+                Console.WriteLine(ieCliente.Address + " SE HA DESCONECTADO");
+
+            }
+            // FINALIZAMOS CONEXION
+            Console.WriteLine("\t Conexion Finalizada con {0}:{1}", ieCliente.Address, ieCliente.Port);
+            sr.Close();
+            sw.Close();
+            ns.Close();
+            cliente.Close();
+        }
     }
 }

@@ -10,9 +10,6 @@ namespace BazarDisp
     {
         // DECLARACION DE VARIABLES
         static FormBienvenida bazar = new FormBienvenida();
-        FormServidor serv;
-        string rutaMarcas;
-        DirectoryInfo imagenes_Marcas;
         int x, y;
         int oriX = 10;
         int numColumnas = 4;
@@ -188,7 +185,7 @@ namespace BazarDisp
                     break;
             }
         }
-
+        
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData.ToString());
@@ -196,20 +193,23 @@ namespace BazarDisp
 
         private void btnIniciaServidor_Click(object sender, EventArgs e)
         {
-            serv = new FormServidor();
-            try
+            FormServidor serv = new FormServidor();
+            serv.Show();
+        }
+
+        private void FormInicio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            DialogResult resp = MessageBox.Show("¿ Desea Salir de La Aplicacion ?", "BazarDisp", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (resp)
             {
-                switch (serv.ShowDialog())
-                {
-                    case DialogResult.OK:
-                        
-                        break;
-                    case DialogResult.Cancel:
-                        serv.Close();
-                        break;
-                }
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
             }
-            catch (Exception) { }
         }
     }
 }

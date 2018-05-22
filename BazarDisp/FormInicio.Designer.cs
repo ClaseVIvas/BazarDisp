@@ -55,11 +55,13 @@
             // btnIniciaServidor
             // 
             this.btnIniciaServidor.AutoSize = true;
+            this.btnIniciaServidor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnIniciaServidor.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciaServidor.Location = new System.Drawing.Point(95, 43);
             this.btnIniciaServidor.Name = "btnIniciaServidor";
             this.btnIniciaServidor.Size = new System.Drawing.Size(117, 42);
             this.btnIniciaServidor.TabIndex = 2;
-            this.btnIniciaServidor.Text = "INICIA SERVIDOR";
+            this.btnIniciaServidor.Text = "FABRICACIÓN";
             this.btnIniciaServidor.UseVisualStyleBackColor = true;
             this.btnIniciaServidor.Click += new System.EventHandler(this.btnIniciaServidor_Click);
             // 
@@ -69,9 +71,9 @@
             this.lblAyuda.Font = new System.Drawing.Font("Rockwell", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAyuda.Location = new System.Drawing.Point(3, 0);
             this.lblAyuda.Name = "lblAyuda";
-            this.lblAyuda.Size = new System.Drawing.Size(50, 17);
+            this.lblAyuda.Size = new System.Drawing.Size(89, 17);
             this.lblAyuda.TabIndex = 3;
-            this.lblAyuda.Text = "Ayuda";
+            this.lblAyuda.Text = "Fabrica DISP";
             this.lblAyuda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlServidor
@@ -144,12 +146,14 @@
             this.Controls.Add(this.txtExplicacion);
             this.Controls.Add(this.pnlServidor);
             this.Controls.Add(this.lblCliente);
+            this.Font = new System.Drawing.Font("Rockwell", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BAZARDISP";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormInicio_FormClosing);
             this.Load += new System.EventHandler(this.FormInicio_Load);
             this.pnlServidor.ResumeLayout(false);
             this.pnlServidor.PerformLayout();
