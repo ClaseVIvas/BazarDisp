@@ -66,7 +66,7 @@ namespace BazarDisp
                         try
                         {
 
-                            dispositivos.Apple(@"imagen_dispositivos\Apple\0.jpg", "Iphone x",
+                            dispositivos.Apple(@"imagen_dispositivos\Apple\0.jpg", "Iphone X",
                                                 "Tamaño \r\n" +
                                                 "5.8 pulgadas \r\n\r\n" +
                                                 "Resolución \r\n" +

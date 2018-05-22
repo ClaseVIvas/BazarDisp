@@ -31,7 +31,7 @@ namespace BazarDisp
 
                 NuevoMovil nuevoMovil = new NuevoMovil(nombre, marca, color, tamaño);
 
-                MessageBox.Show("Datos Enviados A la Frabrica: " + nuevoMovil.Nombre + "\r\n" + nuevoMovil.Marca + "\r\n" + nuevoMovil.Color + "\r\n" + nuevoMovil.Tamaño, "BazarDis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Datos Enviados A la Frabrica: \r\n" + nuevoMovil.Nombre + "\r\n" + nuevoMovil.Marca + "\r\n" + nuevoMovil.Color + "\r\n" + nuevoMovil.Tamaño, "BazarDis", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (NullReferenceException)
             {

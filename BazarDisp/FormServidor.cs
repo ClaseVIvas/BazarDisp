@@ -100,7 +100,6 @@ namespace BazarDisp
                         marca = pedido.cmBMarca.SelectedItem.ToString();
                         color = pedido.cmBColor.SelectedItem.ToString();
                         tamaño = pedido.cmBTamaño.SelectedItem.ToString();
-                        MessageBox.Show("DATOS RECOGIDOS: " + nombre + "\n" + marca + "\n" + color + "\n" + tamaño, "BAZARDISP", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         servidorBazar.DatosRecibidos(nombre, marca, color, tamaño);
                     }
