@@ -116,7 +116,6 @@
             this.Name = "FormBienvenida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBienvenida";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBienvenida_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
